@@ -22,6 +22,26 @@ class VoivodeshipsController < ApplicationController
 		@voivodeship = Voivodeship.find(params[:id])
 	end
 
+	def edit
+		@voivodeship = Voivodeship.find(params[:id])
+	end
+
+	def update
+		@voivodeship = Voivodeship.find(params[:id])
+		if @voivodeship.update(params[:voivodeship].permit(:name))
+			redirect_to @voivodeship
+		else
+			render 'edit'
+		end
+	end
+
+	def destroy
+		@voivodeship = Voivodeship.find(params[:id])
+		@voivodeship.destroy
+
+		redirect_to voivodeships_path
+	end
+
 	private
 		def voivodeship_params
 			params.require(:voivodeship).permit(:name)

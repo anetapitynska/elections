@@ -3,8 +3,10 @@
 	<%= @voivodeship.name %>
 </h1>
 
-<p class=""date>
+<p class="date">
 	(Submitted <%= time_ago_in_words(@voivodeship.created_at) %> Ago)
- </p>
+	<%= link_to 'Edit', edit_voivodeship_path(@voivodeship) %>
+	<%= link_to 'Delete', voivodeship_path(@voivodeship), method: :delete, data: { confirm: 'Are you sure?' } %>
+</p>
 
 </div>

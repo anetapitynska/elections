@@ -1,0 +1,20 @@
+<%= form_for @voivodeship do |f| %>
+	<% if @voivodeship.errors.any? %>
+		<div id="errors">
+			<h2><%= pluralize(@voivodeship.errors.count, "error") %> prevented this voivodeship from saving</h2>
+		</div>
+		<ul> 
+			<% @voivodeship.errors.full_messages.each do |msg| %>
+			<li> <%= msg %></li>
+			<% end %>
+		</ul>
+	<% end %>
+<p>
+	<%= f.label :name %> <br>
+	<%= f.text_field :name %>
+</p>
+
+<p>
+	<%= f.submit %>
+</p>
+<% end %>
