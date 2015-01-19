@@ -8,7 +8,46 @@
 </head>
 <body>
 
-<%= yield %>
+	<div id="sidebar">
+<!-- 		<div id="logo">
+			<%= link_to root_path do %>
+				<%= image_tag "logo.png" %>
+			<% end %>
+		</div>  -->
+
+		<ul>
+			<li class="category">Elections App</li>
+			<li><%= link_to "Voivodeships", root_path %></li>
+			<li>Test</li>
+			<li>Test</li>
+			<li>Test</li>
+		</ul>
+
+	<p class="sign_in">Admin Login</p>
+	</div>
+
+	<div id="main_content">
+		<div id="header">
+			<p>Województwa</p>
+
+			<div class="buttons">
+			<button class="button">	<%= link_to "New Voivodeship", new_voivodeship_path %></button>
+		
+			<button class="button">	Log out</button>
+
+			</div>
+
+		</div>
+
+	<% flash.each do |name, msg| %>
+		<%= content_tag(:div, msf, class:"alert") %>
+	<% end %>
+
+	<%= yield %>
+	
+	</div>
+
+
 
 </body>
 </html>
