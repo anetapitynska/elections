@@ -1,16 +1,21 @@
 class VoivodeshipsController < ApplicationController
 	def index
-		@voivodeships = Voivodeship.all.order('name DESC')
+		@voivodeships = Voivodeship.all.order('name ASC')
 	end
 
 	def new
+		@voivodeship = Voivodeship.new
 	end
 
 	def create
 		@voivodeship = Voivodeship.new(voivodeship_params)
 		@voivodeship.save
 
-		redirect_to @voivodeship
+		if @voivodeship.save
+			redirect_to @voivodeship
+		else
+			render 'new'
+		end
 	end
 
 	def show
