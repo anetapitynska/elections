@@ -1,11 +1,12 @@
 	<div class="voivodeship_wrapper">
 			<p class="comment_name"><strong><%= area.name %></strong></p>
+			<p class="comment_name"> <strong>Electorial area No. <%= area.number %> </strong></p>
 			<p class="comment_body"><%= area.people %> people can vote.</p>
 			<p>
 
 
 				<%= link_to 'Show', voivodeship_area_path(area.voivodeship, area), class: "button" %>
-				
+
 				<%= link_to 'Edit', edit_voivodeship_area_path(area.voivodeship, area), class: "button" %>
 				
 					 <%= link_to 'Delete', [area.voivodeship, area],

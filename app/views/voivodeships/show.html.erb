@@ -1,21 +1,27 @@
 <div id="page_wrapper">
+	<%= link_to 'Edit', edit_voivodeship_path(@voivodeship), class: "button" %>
+	<%= link_to 'Delete', voivodeship_path(@voivodeship), method: :delete, data: { confirm: 'Are you sure?' } ,class: "button" %>
+
 <h1 class="voivodeship_name">
 	<%= @voivodeship.name %>
 </h1>
+<p class="comment_body"><%= @voivodeship.seats %> seats in the Regional Assembly</p>
 
 
 <!-- 	(Submitted <%= time_ago_in_words(@voivodeship.created_at) %> Ago) -->
-	<%= link_to 'Edit', edit_voivodeship_path(@voivodeship), class: "button" %>
-	<%= link_to 'Delete', voivodeship_path(@voivodeship), method: :delete, data: { confirm: 'Are you sure?' } ,class: "button" %>
+
 
 <div id="voivodship_wrapper">
 
 	<% if @voivodeship.areas.count == 1 %>
 		<h2>There is <%= @voivodeship.areas.count %> electorial area: </h2>
-	<% else %>
+	   <% else %>
+		   <% if @voivodeship.areas.count == 0 %>
+			<h2>There are no electorial areas. </h2>
+	 	   <% else %>
+	      <h2>There are <%= @voivodeship.areas.count %> electorial areas: </h2>
+		<% end %>
 
-	<h2>There are <%= @voivodeship.areas.count %> electorial areas: </h2>
-	
 	<% end %>
 
 	<%= render @voivodeship.areas %>
