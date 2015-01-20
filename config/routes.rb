@@ -4,7 +4,9 @@ Rails.application.routes.draw do
     resources :areas
   end
 
-  
+  resources :commitees
+
+
   root "voivodeships#index"
 
   

@@ -1,0 +1,21 @@
+<%= form_for @commitee do |f| %>
+	<% if @commitee .errors.any? %>
+		<div id="errors">
+			<h2><%= pluralize(@commitee.errors.count, "error") %> prevented this commitee  from saving</h2>
+		</div>
+		<ul> 
+			<% @commitee.errors.full_messages.each do |msg| %>
+			<li> <%= msg %></li>
+			<% end %>
+		</ul>
+	<% end %>
+<p>
+	<%= f.label :name %> <br>
+	<%= f.text_field :name %>
+</p>
+
+
+<p>
+	<%= f.submit %>
+</p>
+<% end %>
