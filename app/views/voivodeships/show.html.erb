@@ -1,18 +1,25 @@
 <div id="page_wrapper">
-<h1 class="name">
+<h1 class="voivodeship_name">
 	<%= @voivodeship.name %>
 </h1>
 
-<p class="date">
-	(Submitted <%= time_ago_in_words(@voivodeship.created_at) %> Ago)
+<p class="action_links">
+<!-- 	(Submitted <%= time_ago_in_words(@voivodeship.created_at) %> Ago) -->
 	<%= link_to 'Edit', edit_voivodeship_path(@voivodeship) %>
 	<%= link_to 'Delete', voivodeship_path(@voivodeship), method: :delete, data: { confirm: 'Are you sure?' } %>
 </p>
 
-<div id="comments">
-	<h2><%= @voivodeship.areas.count %> electorial areas </h2>
-	<%= render @voivodeship.areas %>
+<div id="voivodship_wrapper">
 
+	<% if @voivodeship.areas.count == 1 %>
+		<h2>There is <%= @voivodeship.areas.count %> electorial area: </h2>
+	<% else %>
+
+	<h2>There are <%= @voivodeship.areas.count %> electorial areas: </h2>
+	
+	<% end %>
+
+	<%= render @voivodeship.areas %>
 	<h3>Add an electorial area</h3>
 	<%= render "areas/form" %>
 

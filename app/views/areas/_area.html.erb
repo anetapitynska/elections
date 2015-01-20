@@ -1,16 +1,16 @@
+	<div class="voivodeship_wrapper">
+			<p class="comment_name"><strong><%= area.name %></strong></p>
+			<p class="comment_body"><%= area.people %> people can vote.</p>
+			<p><%= link_to 'Delete', [area.voivodeship, area],
+					method: :delete,
+					class: "button",
+					data: { confirm: 'Are you sure?' } %></p>
 
-	<!-- 	<div class="comment clearfix">
-		<div class="comment_content">
-			<h2 class="name"><%= link_to area.name, area %></h2>
-			
-		</div>		
-		</div> -->
+					<p><%= link_to 'Edit', [area.voivodeship, area],
+					method: :edit,
+					class: "button"
+					 %></p>
 
-<div class="comment clearfix">
-<div class="comment_content">
-<p class="comment_name"><strong><%= area.name %></strong></p>
-<p class="comment_body"><%= area.people %></p>
-<p class="comment_time"><%= time_ago_in_words(area.created_at) %> Ago</p>
+					
+	</div>
 
-</div>		
-</div>

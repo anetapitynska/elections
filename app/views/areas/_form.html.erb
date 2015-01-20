@@ -1,4 +1,4 @@
-<% form_for([@voivodeship, @voivodeship.areas.build]) do |f| %>
+<%= form_for([@voivodeship, @voivodeship.areas.build]) do |f| %>
 <p>
 	<%= f.label :name %> <br>
 	<%= f.text_field :name %>
