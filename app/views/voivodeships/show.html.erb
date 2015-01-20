@@ -9,4 +9,12 @@
 	<%= link_to 'Delete', voivodeship_path(@voivodeship), method: :delete, data: { confirm: 'Are you sure?' } %>
 </p>
 
+<div id="comments">
+	<h2><%= @voivodeship.areas.count %> electorial areas </h2>
+	<%= render @voivodeship.areas %>
+
+	<h3>Add an electorial area</h3>
+	<%= render "areas/form" %>
+
+</div>
 </div>

@@ -1,0 +1,15 @@
+<% form_for([@voivodeship, @voivodeship.areas.build]) do |f| %>
+<p>
+	<%= f.label :name %> <br>
+	<%= f.text_field :name %>
+</p>
+
+<p>
+	<%= f.label :people %> <br>
+	<%= f.text_field :people %>
+</p>
+<p>
+	<%= f.submit %>
+</p>
+
+<% end %>

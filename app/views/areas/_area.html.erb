@@ -1,0 +1,16 @@
+
+	<!-- 	<div class="comment clearfix">
+		<div class="comment_content">
+			<h2 class="name"><%= link_to area.name, area %></h2>
+			
+		</div>		
+		</div> -->
+
+<div class="comment clearfix">
+<div class="comment_content">
+<p class="comment_name"><strong><%= area.name %></strong></p>
+<p class="comment_body"><%= area.people %></p>
+<p class="comment_time"><%= time_ago_in_words(area.created_at) %> Ago</p>
+
+</div>		
+</div>
