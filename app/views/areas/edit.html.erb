@@ -1,7 +1,22 @@
 <div id="page_wrapper">
 
-<h1> Edit area </h1>
+<%= form_for([@voivodeship, @area]) do |f| %>
+<p>
+	<%= f.label :name %> <br>
+	<%= f.text_field :name %>
+</p>
 
-	<%= render 'form' %>
+<p>
+	<%= f.label :people %> <br>
+	<%= f.text_field :people %>
+</p>
+<p>
+	<%= f.submit %>
+</p>
+
+<% end %>
+
+
+
 
 </div>

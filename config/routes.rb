@@ -3,9 +3,11 @@ Rails.application.routes.draw do
   resources :voivodeships do
     resources :areas
   end
+
   
   root "voivodeships#index"
 
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

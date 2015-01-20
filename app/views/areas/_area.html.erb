@@ -1,16 +1,21 @@
 	<div class="voivodeship_wrapper">
 			<p class="comment_name"><strong><%= area.name %></strong></p>
 			<p class="comment_body"><%= area.people %> people can vote.</p>
-			<p><%= link_to 'Delete', [area.voivodeship, area],
+			<p>
+
+
+				<%= link_to 'Show', voivodeship_area_path(area.voivodeship, area), class: "button" %>
+				
+				<%= link_to 'Edit', edit_voivodeship_area_path(area.voivodeship, area), class: "button" %>
+				
+					 <%= link_to 'Delete', [area.voivodeship, area],
 					method: :delete,
 					class: "button",
-					data: { confirm: 'Are you sure?' } %></p>
+					data: { confirm: 'Are you sure?' } %>
 
-					<p><%= link_to 'Edit', [area.voivodeship, area],
-					method: :edit,
-					class: "button"
-					 %></p>
+					</p>
 
-					
+
+
 	</div>
 

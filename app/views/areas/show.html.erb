@@ -1,0 +1,10 @@
+<div id="page_wrapper">
+<h1 class="voivodeship_name">
+	<%= @area.name %> electorial area
+</h1> <h2>  </h2>
+<p class="comment_body"><%= @area.people %> people is allowed to vote.</p>
+
+<%= link_to 'Edit', edit_voivodeship_area_path(@voivodeship, @area), class: "button" %>
+
+
+</div>
