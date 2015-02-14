@@ -10,7 +10,7 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
+
  *= require_self
  */
 
@@ -27,7 +27,6 @@ h1, h2, h3, h4, h5, h6 {
 h1 {
 			color: red;
 }
-
 
 a {
 	text-decoration: none;
@@ -59,7 +58,7 @@ a {
 		padding-right: 3em;
 		.category {
 			font-weight: 700;
-			font-size: 0.7em;
+			font-size: 0.9em;
 			text-transform: uppercase;
 			color: red;
 		}

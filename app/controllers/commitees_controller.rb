@@ -29,7 +29,7 @@ class CommiteesController < ApplicationController
 	def update
 		@commitee = Commitee.find(params[:id])
 		if @commitee.update(params[:commitee].permit(:name))
-			redirect_to @committee
+			redirect_to @commitee
 		else
 			render 'edit'
 		end

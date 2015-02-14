@@ -14,9 +14,14 @@ end
 
 class CreateVoivodeshipsCommiteesJoinTable < ActiveRecord::Migration
   def change
-    create_table :voivodeships_commitees, id: false do |t|
-      t.integer :voivodeship_id
-      t.integer :commitee_id
+    create_table :commitees_voivodeships, id: false do |t|
+        t.integer :commitee_id
+     	t.integer :voivodeship_id
+   
     end
   end
+end
+
+def change
+  rename_table :voivodeships_commitees, :commitees_voivodeships
 end

@@ -3,7 +3,9 @@
 <h1 class="voivodeship_name">
 	<%= @commitee.name %>
 </h1>
-
+	
+	<%= link_to 'Edit', edit_commitee_path(@commitee), class: "button" %>
+	<%= link_to 'Delete', commitee_path(@commitee), method: :delete, data: { confirm: 'Are you sure?' } ,class: "button" %>
 
 
 <div id="voivodship_wrapper">
