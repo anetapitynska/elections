@@ -14,4 +14,29 @@ ActiveAdmin.register Voivodeship do
   # end
 
 
+  show do
+   attributes_table do
+      row :name
+      row :seats
+      row :created_at
+      row :updated_at
+      row :commitee_ids 
+
+      end
+  end
+
+  form do |f|
+    f.actions
+    f.inputs 'coś' do
+
+      f.input :name
+      f.input :seats
+      f.input :commitees, :as => :check_boxes
+    end
+    f.actions
+
+
+  end
+
+
 end

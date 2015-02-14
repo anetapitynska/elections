@@ -4,7 +4,8 @@ ActiveAdmin.register Commitee do
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
-  permit_params :list, :of, :attributes, :on, :model, voivodeship_ids: []
+  permit_params :name, 
+              voivodeship_ids: []
   #
   # or
   #
@@ -14,7 +15,20 @@ ActiveAdmin.register Commitee do
   #   permitted
   # end
 
+
+  show do
+   attributes_table do
+      row :name
+      row :created_at
+      row :updated_at
+      row :voivodeship_ids
+
+ 
+      end
+  end
+
   form do |f|
+
     f.inputs do
       f.input :name
       f.input :voivodeships, :as => :check_boxes

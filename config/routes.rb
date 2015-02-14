@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
  
+ devise_for :users
+scope "/adminis" do
+  resources :users
+end
+  resources :roles
+
+ # resources :users
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   resources :voivodeships do
@@ -8,7 +16,7 @@ Rails.application.routes.draw do
 
   resources :commitees
 
-
+  
   root "voivodeships#index"
 
   
