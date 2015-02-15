@@ -31,9 +31,11 @@
 			<p>Elections Application </p>
 
 			<div class="buttons">
-			<button class="button">	<%= link_to "New Voivodeship", new_voivodeship_path %></button>
-			<button class="button">	<%= link_to "New Commitee", new_commitee_path %></button>
-			<button class="button">	Log out</button>
+			<% if user_signed_in? %>
+			Welcome <%= current_user.name %>! Rola: <%= current_user.role.name %><button class="button">	<%= link_to "Edit your profile", edit_user_registration_path %></button>
+			<button class="button">	<%= link_to "Log out", destroy_user_session_path, :method => :delete %></button>
+			<% else %><button class="button">	<%= link_to "Sign up", new_user_registration_path %></button>
+			<button class="button">	<%= link_to "Sign in", new_user_session_path %></button><% end %>
 
 			</div>
 
@@ -41,13 +43,6 @@
 
 
 
-<% if user_signed_in? %>
-  Signed in as <%= current_user.email %>. Not you?
-  <%= link_to "Edit profile", edit_user_registration_path %>
-  <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
-<% else %>
-  <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
-<% end %>
  
 <% flash.each do |name, msg| %>
   <%= content_tag :div, msg, id: "flash_#{name}" %>

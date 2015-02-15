@@ -11,4 +11,10 @@ class User < ActiveRecord::Base
     self.role = Role.find_by name: "AreaMember" if self.role.nil?
   end
 
+def admin?
+  self.role.name == "Admin"
+end
+
+
+
 end

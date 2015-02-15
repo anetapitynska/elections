@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
  
- devise_for :users
-scope "/adminis" do
+devise_for :users
+  scope "/adminis" do
   resources :users
 end
   resources :roles
@@ -9,6 +9,7 @@ end
  # resources :users
 
   devise_for :admin_users, ActiveAdmin::Devise.config
+  
   ActiveAdmin.routes(self)
   resources :voivodeships do
     resources :areas
@@ -16,8 +17,13 @@ end
 
   resources :commitees
 
+  authenticated :user do
+      resources :voivodeships
+    root :to => 'voivodeships#index', as: :authenticated_root
+  end
+  root :to => 'welcome#index'
   
-  root "voivodeships#index"
+ 
 
   
   # The priority is based upon order of creation: first created -> highest priority.
@@ -74,4 +80,6 @@ end
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+
+
 end

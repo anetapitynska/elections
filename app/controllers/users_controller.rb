@@ -2,8 +2,10 @@
 class UsersController < InheritedResources::Base
 before_filter :authenticate_user!
 
+load_and_authorize_resource
+
 def show
-	@user = User.find params[:id]
+  @user = User.find params[:id]
   @joined_on = @user.created_at.to_formatted_s(:short)
   if @user.current_sign_in_at
     @last_login = @user.current_sign_in_at.to_formatted_s(:short)
@@ -42,6 +44,7 @@ end
 	def needs_password?(user, params)
 	  params[:password].present?
 	end
+	
     def user_params
  	 params.require(:user).permit(:email, :password, :password_confirmation, :name, :role_id)
 	end

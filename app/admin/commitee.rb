@@ -21,9 +21,8 @@ ActiveAdmin.register Commitee do
       row :name
       row :created_at
       row :updated_at
-      row :voivodeship_ids
-
- 
+      row :voivodeship_ids 
+     
       end
   end
 
