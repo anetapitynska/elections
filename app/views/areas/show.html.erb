@@ -2,7 +2,17 @@
 <h1 class="voivodeship_name">
 	<%= @area.name %> 
 </h1> <h2> Electorial area No. <%= @area.number %> </h2>
+
 <p class="comment_body"><%= @area.people %> people is allowed to vote.</p>
+
+Empty votes: <%= @area.empty_votes %>
+<br>
+<br>
+
+Incorrect votes: <%= @area.incorrect_votes %>
+<br>
+<br>
+
 
 <%= link_to 'Edit', edit_voivodeship_area_path(@voivodeship, @area), class: "button" %>
 

@@ -9,7 +9,7 @@ class AreasController < ApplicationController
 
 	def create
 		@voivodeship = Voivodeship.find(params[:voivodeship_id])
-		@area = @voivodeship.areas.create(params[:area].permit(:name, :people, :number))
+		@area = @voivodeship.areas.create(params[:area].permit(:name, :people, :number, :empty_votes, :incorrect_votes))
 
 		redirect_to voivodeship_path(@voivodeship)
 	end
@@ -39,14 +39,17 @@ class AreasController < ApplicationController
 	def update
 		@voivodeship = Voivodeship.find(params[:voivodeship_id])
 		@area = @voivodeship.areas.find(params[:id])
-		if @area.update(params[:area].permit(:name, :people, :number))
+		if @area.update(params[:area].permit(:name, :people, :number,  :empty_votes, :incorrect_votes))
 			redirect_to @voivodeship
 		else
 			render 'edit'
 		end
 	end
 
-
+private
+		def area_params
+			params.require(:area).permit(:name, :people, :number, :empty_votes, :incorrect_votes)
+		end
 
 
 
