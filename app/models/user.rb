@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   belongs_to :role
+  belongs_to :area
   validates_presence_of :name
   before_save :assign_role
 	

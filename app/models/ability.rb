@@ -12,6 +12,10 @@
     end
     if user.role.name == "area_member"
       can :manage, Voivodeship
+      can :manage, Area do |a|
+        a.id.to_s == user.area_id.to_s
+    end
+
     end
     
     if user.role.name == "central_member"

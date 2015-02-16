@@ -46,7 +46,7 @@ end
 	end
 	
     def user_params
- 	 params.require(:user).permit(:email, :password, :password_confirmation, :name, :role_id)
+ 	 params.require(:user).permit(:email, :password, :password_confirmation, :name, :role_id, :area_id)
 	end
 end
 

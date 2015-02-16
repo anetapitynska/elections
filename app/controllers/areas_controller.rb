@@ -1,7 +1,7 @@
 class AreasController < ApplicationController
 	
     before_filter :authenticate_user!	
-load_and_authorize_resource
+    load_and_authorize_resource
 	def new
 		@area = Area.new
 	end
@@ -30,8 +30,10 @@ load_and_authorize_resource
 
 
 	def edit
+		@user = User.find params[:id]
 		@voivodeship = Voivodeship.find(params[:voivodeship_id])
 		@area = @voivodeship.areas.find(params[:id])
+	#	redirect_to root_path, notice: 'Thou Shalt Nought duuu dat :(' unless @user.area_id == @area
 	end
 
 	def update
