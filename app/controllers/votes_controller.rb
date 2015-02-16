@@ -10,7 +10,19 @@ class VotesController < ApplicationController
   # GET /votes/1.json
   def show
         @vote = Vote.find(params[:id])
+
+   # @sum = Vote.sum(:number)
   end
+
+  #def sum
+   # @votes = Vote.all
+
+  #  @sum = Vote.sum('numberS')
+ # end
+
+
+
+
 
   # GET /votes/new
   def new
@@ -56,6 +68,7 @@ class VotesController < ApplicationController
   # DELETE /votes/1
   # DELETE /votes/1.json
   def destroy
+    @vote = Vote.find(params[:id])
     @vote.destroy
     respond_to do |format|
       format.html { redirect_to votes_url, notice: 'Vote was successfully destroyed.' }

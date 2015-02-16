@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150216191403) do
+ActiveRecord::Schema.define(version: 20150216214932) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -50,9 +50,11 @@ ActiveRecord::Schema.define(version: 20150216191403) do
     t.string   "name"
     t.integer  "people"
     t.integer  "voivodeship_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.integer  "number"
+    t.integer  "empty_votes"
+    t.integer  "incorrect_votes"
   end
 
   add_index "areas", ["voivodeship_id"], name: "index_areas_on_voivodeship_id"

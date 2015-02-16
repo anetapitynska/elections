@@ -1,6 +1,6 @@
 class CommiteesController < ApplicationController
 	
-before_filter :authenticate_user!
+    before_filter :authenticate_user!
 	load_and_authorize_resource
 
 	def index
@@ -24,6 +24,14 @@ before_filter :authenticate_user!
 
 	def show
 		@commitee = Commitee.find(params[:id])
+
+  if @commitee.voivodeships.length == 0
+    @assosciated_voivodeships = "None"
+  else
+    @assosciated_voivodeships = @commitee.voivodeships.map(&:name).join(", ")
+  end
+
+
 	end
 
 	def edit
