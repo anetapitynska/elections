@@ -16,14 +16,10 @@
     
     if user.role.name == "central_member"
       can :read, [Voivodeship, Area]
-      # manage products, assets he owns
-      # can :manage, Product do |product|
-       # product.try(:owner) == user
+   
     else
-     # can :manage, Asset do |asset|
-       # asset.assetable.try(:owner) == user
        can :read, :all
-      end
+    end
 end
 
 

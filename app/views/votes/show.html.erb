@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Number:</strong>
+ 
+   <%= @vote.number %>
+ <br> <br>
+ <strong>Area:</strong>
+
+ <%= @vote.area.name %>
+
+ <br> <br>
+ <strong>Commitee:</strong>
+
+  <%= @vote.commitee.name %>
+
+</p>
+
+<%= link_to 'Edit', edit_vote_path(@vote) %> |
+
+<%= link_to 'Back', votes_path %>

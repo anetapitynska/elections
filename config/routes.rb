@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
  
+  resources :votes
+
 devise_for :users
-  scope "/adminis" do
+ 
   resources :users
-end
+
   resources :roles
 
  # resources :users

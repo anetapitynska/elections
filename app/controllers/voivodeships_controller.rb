@@ -26,6 +26,11 @@ load_and_authorize_resource
 		@voivodeship = Voivodeship.find(params[:id])
 	end
 
+    #def index_commitees_voivodeships
+	#    @voivodeships = Voivodeship.where(id: ["1", "2", "4"]) 
+	#end
+
+
 	def edit
 		@voivodeship = Voivodeship.find(params[:id])
 	end
