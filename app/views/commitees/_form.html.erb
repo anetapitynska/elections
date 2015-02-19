@@ -18,6 +18,16 @@
 	<%= f.file_field :image %>
 </p>
 
+<% for voivodeship in Voivodeship.all %>
+
+<div>
+  <%= check_box_tag "commitee[voivodeship_ids][]", voivodeship.id, @commitee.voivodeship_ids.include?(voivodeship.id) %>
+ 
+  <%= voivodeship.name %>
+</div>
+<% end %>
+
+
 <p>
 	<%= f.submit %>
 </p>

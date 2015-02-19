@@ -1,7 +1,13 @@
 <% @voivodeships.each do |voivodeship| %>
 		<div class="voivodeship_wrapper">
 			<h2 class="name"><%= link_to voivodeship.name, voivodeship %></h2>
-			
+						<h2 class="name"><%= link_to voivodeship.id, voivodeship %></h2>
+
 		</div>
+
+
 <% end %>
 
+<br>
+<button class="button">
+<%= link_to 'New Voivodeship', new_voivodeship_path %> </button>

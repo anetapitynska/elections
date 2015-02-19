@@ -48,6 +48,7 @@ load_and_authorize_resource
 
 	def destroy
 		@voivodeship = Voivodeship.find(params[:id])
+	    Area.delete_all(voivodeship_id = @voivodeship.id)  #delete all areas in this voivodeships
 		@voivodeship.destroy
 
 		redirect_to voivodeships_path

@@ -42,7 +42,7 @@ class CommiteesController < ApplicationController
 
 	def update
 		@commitee = Commitee.find(params[:id])
-		if @commitee.update(params[:commitee].permit(:name))
+		if @commitee.update(params[:commitee].permit(:name, :image, {:voivodeship_ids => []}))
 			redirect_to @commitee
 		else
 			render 'edit'
@@ -51,13 +51,17 @@ class CommiteesController < ApplicationController
 
 	def destroy
 		@commitee = Commitee.find(params[:id])
+		Vote.delete_all(commitee_id = @commitee.id)  #delete all votes in this area
 		@commitee.destroy
+
+
+
 
 		redirect_to commitees_path
 	end
 
 	private
 		def commitee_params
-			params.require(:commitee).permit(:name, :image)
+			params.require(:commitee).permit(:name, :image, {:voivodeship_ids => []})
 		end
 end

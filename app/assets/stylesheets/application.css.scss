@@ -25,7 +25,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-			color: red;
+	color: red;
+	font-size: 4em;
+		
 }
 
 a {
@@ -114,7 +116,7 @@ a {
 #main_content {
 	margin-left: 250px;
 	#header {
-		padding: 1em 3em;
+		padding: 1em 1em;
 		border-bottom: 1px solid #d6dce0;
 		background: #f5f7f9;
 		color: #9eafba;
@@ -216,7 +218,8 @@ a {
 		}
 	}
 	#page_wrapper {
-		padding: 3em;
+
+		padding: 2em;
 		#profile_image {
 			width: 300px;
 			float: left;
@@ -228,6 +231,7 @@ a {
 		}
 		#content {
 			h1 {
+
 				font-weight: 500;
 			}
 			p {

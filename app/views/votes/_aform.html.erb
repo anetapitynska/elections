@@ -19,19 +19,14 @@
  <div class="field">
     <p>Komitet:</p>
      <%= f.label :commitee_id %><br>
-     <%= collection_select(:vote, :commitee_id, Commitee.all, :id,  :name, {prompt: true}) %>
+     <%= collection_select(:vote, :commitee_id, Commitee.find(params[:area_id]), :id,  :name, {prompt: true}) %>
   
-
-
-
-
-
   </div>
-  <div class="field">
+<!--   <div class="field">
     <p>Okręg:</p>
      <%= f.label :area_id %><br>
     <%= collection_select(:vote, :area_id, Area.all, :id, :name, {prompt: true}) %>
-  </div>
+  </div> -->
 
 
 

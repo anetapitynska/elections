@@ -17,6 +17,8 @@ class AreasController < ApplicationController
 	def destroy
 		@voivodeship = Voivodeship.find(params[:voivodeship_id])
 		@area = @voivodeship.areas.find(params[:id])
+		
+		Vote.delete_all(area_id = @area.id)  #delete all votes in this area
 		@area.destroy
 
 		redirect_to voivodeship_path(@voivodeship)
@@ -33,7 +35,6 @@ class AreasController < ApplicationController
 		@user = User.find params[:id]
 		@voivodeship = Voivodeship.find(params[:voivodeship_id])
 		@area = @voivodeship.areas.find(params[:id])
-	#	redirect_to root_path, notice: 'Thou Shalt Nought duuu dat :(' unless @user.area_id == @area
 	end
 
 	def update
