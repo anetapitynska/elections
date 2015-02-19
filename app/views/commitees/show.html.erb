@@ -3,9 +3,12 @@
 <h1 class="voivodeship_name">
 	<%= @commitee.name %>
 </h1>
-	Voivodeships:
+
+	<%= image_tag @commitee.image.url(:medium) %>
+</br></br>	Voivodeships:
  <%= @assosciated_voivodeships %>
-</br>
+
+</br></br>
 
 
 

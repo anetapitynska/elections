@@ -3,6 +3,8 @@ class CommiteesController < ApplicationController
     before_filter :authenticate_user!
 	load_and_authorize_resource
 
+
+
 	def index
 		@commitees = Commitee.all.order('name ASC')
 	end
@@ -56,6 +58,6 @@ class CommiteesController < ApplicationController
 
 	private
 		def commitee_params
-			params.require(:commitee).permit(:name)
+			params.require(:commitee).permit(:name, :image)
 		end
 end
