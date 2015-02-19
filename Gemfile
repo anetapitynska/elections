@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 gem "paperclip", "~> 4.2"
 
+gem 'chartkick', '~> 1.3.2'
+
 gem 'activeadmin', github: 'activeadmin'
 gem 'devise'
 gem 'cancancan', '~> 1.10'
