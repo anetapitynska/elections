@@ -23,7 +23,9 @@ load_and_authorize_resource
 	end
 
 	def show
-		@voivodeship = Voivodeship.find(params[:id])
+		@voivodeship = Voivodeship.find(params[:id]) 
+		@vote = Vote.select('area_id, commitee_id, sum(number) as sum').group('area_id, commitee_id').order('sum DESC')
+
 	end
 
     #def index_commitees_voivodeships

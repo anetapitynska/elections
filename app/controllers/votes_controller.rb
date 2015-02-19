@@ -20,8 +20,23 @@ class VotesController < ApplicationController
   #  @sum = Vote.sum('numberS')
  # end
 
+def sum_voivodeship
+  @voivodeship = Voivodeship.find(params[:id])
+  @areas = Area.select('area_id').where('voivodeship_id')
+  @vote = Vote.select('area_id, commitee_id, sum(number) as sum').group('area_id, commitee_id').order('sum DESC')
+end
 
+def sum
+  @vote = Vote.select('area_id, commitee_id, sum(number) as sum').group('area_id, commitee_id').order('sum DESC')
+end
 
+#def sum_area
+#  @vote = Vote.select('area_id, sum(number) as sum').group('area_id')
+#end
+
+#def sum_commitee
+#   @vote = Vote.select('commitee_id, sum(number) as sum').group('commitee_id')
+# end
 
 
   # GET /votes/new
