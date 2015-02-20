@@ -26,6 +26,13 @@ load_and_authorize_resource
 		@voivodeship = Voivodeship.find(params[:id]) 
 		@vote = Vote.select('area_id, commitee_id, sum(number) as sum').group('area_id, commitee_id').order('sum DESC')
 
+  		if @voivodeship.commitees.length == 0
+   			 @assosciated_commitees = "None"
+ 		 else
+    	@assosciated_commitees = @voivodeship.commitees.map(&:name).join(", ")
+  end
+
+
 	end
 
     #def index_commitees_voivodeships

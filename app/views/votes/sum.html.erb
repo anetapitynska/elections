@@ -22,12 +22,20 @@
         
       </tr>
    <% end %>
+
   </tbody>
 </table>
+<br><br>
 
+<%= Vote.sum(:number) %> <br> <br>
+<%= Vote.group('commitee_id','area_id').sum(:number) %> <br> <br>
 
+<%= Vote.group(:commitee_id , :area_id).sum(:number) %> <br> <br>
+<%= Vote.group('commitee_id').sum(:number) %>  <br> <br>
+<h3> order by votes & commitee </h3>
 
-<%= pie_chart Vote.group(:commitee_id).count %>
+<%= pie_chart Vote.group('commitee_id').sum(:number) %>
+
 
 
 
