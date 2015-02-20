@@ -28,6 +28,12 @@ class AreasController < ApplicationController
 		@voivodeship = Voivodeship.find(params[:voivodeship_id])
 		@area = @voivodeship.areas.find(params[:id])
 
+		@vote = Vote.select('area_id, commitee_id, sum(number) as sum').where(area_id: @area.id).group('area_id, commitee_id').order('sum DESC')
+		@sumv = Vote.where(area_id: @area.id).sum(:number)
+
+		@suma = @area.empty_votes + @area.incorrect_votes + @sumv.to_i
+
+
 		@votess = Vote.where(area_id: @area.id).group('commitee_id').sum(:number)
 
 		if @voivodeship.commitees.length == 0

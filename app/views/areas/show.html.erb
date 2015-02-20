@@ -12,6 +12,11 @@ Ballots: <%= @area.ballots %>
 <br>
 <br>
 
+Sum of votes: <%= @suma%>
+<br>
+<br>
+
+
 Empty votes: <%= @area.empty_votes %>
 <br>
 <br>
@@ -19,6 +24,33 @@ Empty votes: <%= @area.empty_votes %>
 Incorrect votes: <%= @area.incorrect_votes %>
 <br>
 <br>
+
+<table>
+	  <thead>
+	    <tr>
+	      <th>Number of votes</th>
+	      <th>Area</th>
+	      <th>Committee</th>
+	 
+	      <th colspan="3"></th>
+	    </tr>
+	  </thead>
+
+	  <tbody> 
+
+
+	    <% @vote.each do |vote| %>
+	        <% if vote.area.voivodeship_id == @voivodeship.id %>
+	      <tr>
+	        <td><%= vote.sum %></td>
+	        <td><%= vote.area.name %></td>
+	        <td><%= vote.commitee.name %></td>	        
+	      </tr>
+	         <% end %>
+	   <% end %>
+	  </tbody>
+	</table>
+
 
 <%= link_to 'Edit', edit_voivodeship_area_path(@voivodeship, @area), class: "button" %>
 
