@@ -26,8 +26,18 @@
 </p>
 
 <p>
-  <strong>Email:
+  <strong>Email:</strong>
   <%= @user.email %>
+</p>
+
+<p>
+  <strong>Area:</strong>
+ 
+  <% if @user.area_id.present? == true
+   %>  <%= @user_area.name %>
+   <%= @user_voivodeship.name %>
+  <% end %>
+
 </p>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |

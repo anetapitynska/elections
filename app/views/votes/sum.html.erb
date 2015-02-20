@@ -34,6 +34,9 @@
 <%= Vote.group('commitee_id').sum(:number) %>  <br> <br>
 <h3> order by votes & commitee </h3>
 
+
+
+
 <%= pie_chart Vote.group('commitee_id').sum(:number) %>
 
 

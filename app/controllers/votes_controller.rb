@@ -1,5 +1,7 @@
-class VotesController < ApplicationController
- 
+class VotesController < InheritedResources::Base
+ before_action :authenticate_user!
+
+
   # GET /votes
   # GET /votes.json
   def index
@@ -41,7 +43,30 @@ end
 
   # GET /votes/new
   def new
-    @vote = Vote.new
+  @vote = Vote.new
+
+   @user = current_user
+
+  @area_id = @user.area_id
+  if @area_id.present? == true 
+      @user_area = Area.find(@area_id)
+      @voivodeship_id = @user_area.voivodeship_id
+      @user_voivodeship = Voivodeship.find(@voivodeship_id)
+  
+     @com = Commitee.where(voivodeship_id: @user_voivodeship.id)
+
+
+      if @user_voivodeship.commitees.length == 0
+         @assosciated_commitees = "None"
+     else
+      @assosciated_commitees = @user_voivodeship.commitees.map(&:id)
+
+ end
+  end
+
+
+
+
   end
 
   # GET /votes/1/edit
@@ -52,7 +77,12 @@ end
   # POST /votes
   # POST /votes.json
   def create
-    @vote = Vote.new(vote_params)
+
+  
+
+  @vote = Vote.new(vote_params)
+
+
 
     respond_to do |format|
       if @vote.save
@@ -68,7 +98,19 @@ end
   # PATCH/PUT /votes/1
   # PATCH/PUT /votes/1.json
   def update
-          @vote = Vote.find(params[:id])
+
+  
+  @user = User.find params[:id]
+  @area_id = @user.area_id
+  if @area_id.present? == true 
+      @user_area = Area.find(@area_id)
+      @voivodeship_id = @user_area.voivodeship_id
+      @user_voivodeship = Voivodeship.find(@voivodeship_id)
+  end
+
+
+
+    @vote = Vote.find(params[:id])
     respond_to do |format|
       if @vote.update(vote_params)
         format.html { redirect_to @vote, notice: 'Vote was successfully updated.' }
