@@ -1,7 +1,7 @@
 class VoivodeshipsController < ApplicationController
 
-before_filter :authenticate_user!
-load_and_authorize_resource
+	before_filter :authenticate_user!
+	load_and_authorize_resource
 
 	def index
 		@voivodeships = Voivodeship.all.order('name ASC')
@@ -26,19 +26,12 @@ load_and_authorize_resource
 		@voivodeship = Voivodeship.find(params[:id]) 
 		@vote = Vote.select('area_id, commitee_id, sum(number) as sum').group('area_id, commitee_id').order('sum DESC')
 
-  		if @voivodeship.commitees.length == 0
-   			 @assosciated_commitees = "None"
- 		 else
+  	if @voivodeship.commitees.length == 0
+  		@assosciated_commitees = "None"
+ 	  else
     	@assosciated_commitees = @voivodeship.commitees.map(&:name).join(", ")
-  end
-
-
+  	end
 	end
-
-    #def index_commitees_voivodeships
-	#    @voivodeships = Voivodeship.where(id: ["1", "2", "4"]) 
-	#end
-
 
 	def edit
 		@voivodeship = Voivodeship.find(params[:id])
@@ -55,9 +48,8 @@ load_and_authorize_resource
 
 	def destroy
 		@voivodeship = Voivodeship.find(params[:id])
-	    Area.delete_all(voivodeship_id = @voivodeship.id)  #delete all areas in this voivodeships
+	  Area.delete_all(voivodeship_id = @voivodeship.id)  #delete all areas in this voivodeships
 		@voivodeship.destroy
-
 		redirect_to voivodeships_path
 	end
 

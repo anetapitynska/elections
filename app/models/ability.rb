@@ -1,32 +1,24 @@
-
-
-
-  class Ability
+class Ability
   include CanCan::Ability
  
   def initialize(user)
     user ||= User.new # guest user
  
     if user.role.name == "admin"
-        can :manage, :all
+      can :manage, :all
     end
     if user.role.name == "area_member"
       can :manage, Voivodeship
       can :manage, Area do |a|
         a.id.to_s == user.area_id.to_s
+      end
     end
-
-    end
-    
     if user.role.name == "central_member"
       can :read, [Voivodeship, Area]
-   
     else
-       can :read, :all
+      can :read, :all
     end
-end
-
-
+  end
     # Define abilities for the passed in user here. For example:
     #
     #   user ||= User.new # guest user (not logged in)

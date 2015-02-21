@@ -20,12 +20,7 @@
     <p>Komitet:</p>
      <%= f.label :commitee_id %><br>
      <%= collection_select(:vote, :commitee_id, Commitee.find(@assosciated_commitees), :id,  :name, {prompt: true}) %>
-  
-
-
-
-
-
+ 
   </div>
   <div class="field">
     <p>Okręg:</p>

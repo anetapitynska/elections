@@ -1,89 +1,57 @@
 class VotesController < InheritedResources::Base
- before_action :authenticate_user!
+  before_action :authenticate_user!
+  load_and_authorize_resource
 
-
-  # GET /votes
-  # GET /votes.json
   def index
     @votes = Vote.all
   end
 
-  # GET /votes/1
-  # GET /votes/1.json
   def show
-        @vote = Vote.find(params[:id])
-
+    @vote = Vote.find(params[:id])
    # @sum = Vote.sum(:number)
   end
 
-  #def sum
-   # @votes = Vote.all
+  def sum_voivodeship
+    @voivodeship = Voivodeship.find(params[:id])
+    @areas = Area.select('area_id').where('voivodeship_id')
+    @vote = Vote.select('area_id, commitee_id, sum(number) as sum').group('area_id, commitee_id').order('sum DESC')
+  end
 
-  #  @sum = Vote.sum('numberS')
- # end
+  def sum
+    @vote = Vote.select('area_id, commitee_id, sum(number) as sum').group('area_id, commitee_id').order('sum DESC')
+  end
 
-def sum_voivodeship
-  @voivodeship = Voivodeship.find(params[:id])
-  @areas = Area.select('area_id').where('voivodeship_id')
-  @vote = Vote.select('area_id, commitee_id, sum(number) as sum').group('area_id, commitee_id').order('sum DESC')
-end
+  #def sum_area
+  #  @vote = Vote.select('area_id, sum(number) as sum').group('area_id')
+  #end
 
-def sum
-  @vote = Vote.select('area_id, commitee_id, sum(number) as sum').group('area_id, commitee_id').order('sum DESC')
-end
+  #def sum_commitee
+  #   @vote = Vote.select('commitee_id, sum(number) as sum').group('commitee_id')
+  # end
 
-#def sum_area
-#  @vote = Vote.select('area_id, sum(number) as sum').group('area_id')
-#end
-
-#def sum_commitee
-#   @vote = Vote.select('commitee_id, sum(number) as sum').group('commitee_id')
-# end
-
-
-  # GET /votes/new
   def new
-  @vote = Vote.new
-
-   @user = current_user
-
-  @area_id = @user.area_id
-  if @area_id.present? == true 
-      @user_area = Area.find(@area_id)
-      @voivodeship_id = @user_area.voivodeship_id
-      @user_voivodeship = Voivodeship.find(@voivodeship_id)
-  
-     @com = Commitee.where(voivodeship_id: @user_voivodeship.id)
-
-
-      if @user_voivodeship.commitees.length == 0
-         @assosciated_commitees = "None"
-     else
-      @assosciated_commitees = @user_voivodeship.commitees.map(&:id)
-
- end
+    @vote = Vote.new
+    @user = current_user
+    @area_id = @user.area_id
+    if @area_id.present? == true 
+        @user_area = Area.find(@area_id)
+        @voivodeship_id = @user_area.voivodeship_id
+        @user_voivodeship = Voivodeship.find(@voivodeship_id)
+        @com = Commitee.where(voivodeship_id: @user_voivodeship.id)
+        if @user_voivodeship.commitees.length == 0
+          @assosciated_commitees = "None"
+        else
+          @assosciated_commitees = @user_voivodeship.commitees.map(&:id)
+        end
+    end
   end
 
-
-
-
-  end
-
-  # GET /votes/1/edit
   def edit
-        @vote = Vote.find(params[:id])
+    @vote = Vote.find(params[:id])
   end
 
-  # POST /votes
-  # POST /votes.json
   def create
-
-  
-
-  @vote = Vote.new(vote_params)
-
-
-
+    @vote = Vote.new(vote_params)
     respond_to do |format|
       if @vote.save
         format.html { redirect_to @vote, notice: 'Vote was successfully created.' }
@@ -95,20 +63,14 @@ end
     end
   end
 
-  # PATCH/PUT /votes/1
-  # PATCH/PUT /votes/1.json
   def update
-
-  
-  @user = User.find params[:id]
-  @area_id = @user.area_id
-  if @area_id.present? == true 
-      @user_area = Area.find(@area_id)
-      @voivodeship_id = @user_area.voivodeship_id
-      @user_voivodeship = Voivodeship.find(@voivodeship_id)
-  end
-
-
+    @user = User.find params[:id]
+    @area_id = @user.area_id
+    if @area_id.present? == true 
+        @user_area = Area.find(@area_id)
+        @voivodeship_id = @user_area.voivodeship_id
+        @user_voivodeship = Voivodeship.find(@voivodeship_id)
+    end
 
     @vote = Vote.find(params[:id])
     respond_to do |format|
@@ -122,8 +84,6 @@ end
     end
   end
 
-  # DELETE /votes/1
-  # DELETE /votes/1.json
   def destroy
     @vote = Vote.find(params[:id])
     @vote.destroy
@@ -134,12 +94,10 @@ end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_vote
       @vote = Vote.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def vote_params
       params.require(:vote).permit(:number, :commitee_id, :area_id)
     end

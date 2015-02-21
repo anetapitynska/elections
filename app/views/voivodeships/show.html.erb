@@ -1,16 +1,17 @@
 <div id="page_wrapper">
-	<h1 class="voivodeship_name">
-		<%= @voivodeship.name %>
-	</h1>
 
 	<%= link_to 'Edit', edit_voivodeship_path(@voivodeship), class: "button" %>
 	<%= link_to 'Delete', voivodeship_path(@voivodeship), method: :delete, data: { confirm: 'Are you sure?' } ,class: "button" %>
 
-<p><%= @voivodeship.seats %> seats in the Regional Assembly</p>
-<p> Committees:  <%= @assosciated_commitees %> </p>
+	<h1 class="voivodeship_name">
+		<%= @voivodeship.name %>
+	</h1>
+
+<p><strong>Seats in the Regional Assembly: </strong> <%= @voivodeship.seats %> </p>
+<p><strong> Committees: </strong>  <%= @assosciated_commitees %> </p>
 
 
-	<h2>Results ordered by committe & area (only from voivodeship)</h2>
+	<h2>Results </h2>
 	<table>
 	  <thead>
 	    <tr>

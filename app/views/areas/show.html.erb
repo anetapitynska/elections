@@ -57,6 +57,9 @@ Incorrect votes: <%= @area.incorrect_votes %>
 <%= pie_chart Vote.where(area_id: @area.id).group('commitee_id').sum(:number) %>
 
 
+<%= pie_chart ({"Football" => 10, "Basketball" => 5}) %>
+
+
 <%= pie_chart @votess %>
 
 <br><%= @votess.to_a %>

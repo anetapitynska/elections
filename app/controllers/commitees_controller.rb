@@ -1,9 +1,7 @@
 class CommiteesController < ApplicationController
 	
-    before_filter :authenticate_user!
+  before_filter :authenticate_user!
 	load_and_authorize_resource
-
-
 
 	def index
 		@commitees = Commitee.all.order('name ASC')
@@ -26,14 +24,12 @@ class CommiteesController < ApplicationController
 
 	def show
 		@commitee = Commitee.find(params[:id])
-
-  if @commitee.voivodeships.length == 0
-    @assosciated_voivodeships = "None"
-  else
-    @assosciated_voivodeships = @commitee.voivodeships.map(&:name).join(", ")
-  end
-
-
+	  
+	  if @commitee.voivodeships.length == 0
+	    @assosciated_voivodeships = "None"
+	  else
+	    @assosciated_voivodeships = @commitee.voivodeships.map(&:name).join(", ")
+	  end
 	end
 
 	def edit
@@ -53,10 +49,6 @@ class CommiteesController < ApplicationController
 		@commitee = Commitee.find(params[:id])
 		Vote.delete_all(commitee_id = @commitee.id)  #delete all votes in this area
 		@commitee.destroy
-
-
-
-
 		redirect_to commitees_path
 	end
 

@@ -6,7 +6,6 @@ class AreasController < ApplicationController
 		@area = Area.new
 	end
 
-
 	def create
 		@voivodeship = Voivodeship.find(params[:voivodeship_id])
 		@area = @voivodeship.areas.create(params[:area].permit(:name, :people, :number, :empty_votes, :incorrect_votes, :ballots))
@@ -32,19 +31,13 @@ class AreasController < ApplicationController
 		@sumv = Vote.where(area_id: @area.id).sum(:number)
 
 		@suma = @area.empty_votes + @area.incorrect_votes + @sumv.to_i
-
-
-		@votess = Vote.where(area_id: @area.id).group('commitee_id').sum(:number)
-
+	#a	@votess = Vote.where(area_id: @area.id).group('commitee_id').sum(:number)
 		if @voivodeship.commitees.length == 0
-   			 @assosciated_commitees = "None"
- 		 else
+   		@assosciated_commitees = "None"
+ 		else
     	@assosciated_commitees = @voivodeship.commitees.map(&:name).join(", ")
-        end
-
-
+    end
 	end
-
 
 	def edit
 	#	@user = User.find(params[:id])
@@ -62,11 +55,9 @@ class AreasController < ApplicationController
 		end
 	end
 
-private
+	private
 		def area_params
 			params.require(:area).permit(:name, :people, :number, :empty_votes, :incorrect_votes, :ballots)
 		end
-
-
 
 end

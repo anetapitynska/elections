@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
  
-  resources :votes
+as :admin do
+  post 'ad/users' => 'users#create'
+  # your other :admin routes here
+end
+
+resources :votes
 
 devise_for :users
  
