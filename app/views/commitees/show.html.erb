@@ -6,21 +6,13 @@
 
 	 	<% unless  @commitee.image.blank? %>
 			    <%= image_tag @commitee.image.url(:medium) %> 
-			  <% end %>
-</br></br>	Voivodeships:
+	    <% end %>
+</br></br>	
+
+<strong> Voivodeships: </strong>
  <%= @assosciated_voivodeships %>
 
 </br></br>
-
-
-
-	<% if @commitee.voivodeship_ids.include?(5) %> 
- lalalla
-
-
-
-<% end %>
-
 
 
 </br>

@@ -12,7 +12,7 @@
 
 
 	<h2>Results </h2>
-	<table>
+	<table class="table table-striped">
 	  <thead>
 	    <tr>
 	      <th>Number of votes</th>
@@ -42,6 +42,9 @@
 
 	<h2>Voter turnout</h2>
 <%= pie_chart @voivodeship.areas.group(:name).sum(:ballots) %>
+
+
+
 
 
 

@@ -1,15 +1,19 @@
 <% @commitees.each do |commitee| %>
 		<div class="voivodeship_wrapper">
 			
-         <div>
+     	<h2 class="name">    <div>
          	<% unless  commitee.image.blank? %>
 			    <%= image_tag commitee.image.url(:thumb) %> 
 			  <% end %>
-			<h2 class="name"> <%= link_to commitee.name, commitee %></h2>
-		</div>
+		 <%= link_to commitee.name, commitee %>
+		</div></h2>
+
 		</div>
 <% end %>
 
 <br>
-<button class="button">
-<%= link_to 'New Committee', new_commitee_path %> </button>
+
+<div id="page_wrapper">
+<button class="button"><%= link_to 'New Committee', new_commitee_path %> </button>
+</div>
+

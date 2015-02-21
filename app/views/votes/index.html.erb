@@ -1,8 +1,7 @@
-<p id="notice"><%= notice %></p>
+<div id="page_wrapper">
+<h1>All Votes</h1>
 
-<h1>Listing Votes</h1>
-
-<table>
+  <table class="table table-striped">
   <thead>
     <tr>
       <th>Number</th>
@@ -32,4 +31,6 @@
 
 <br>
 
-<%= link_to 'New Vote', new_vote_path %>
+
+<%= link_to 'New Vote', new_vote_path, class: "button" %>
+</div>

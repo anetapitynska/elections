@@ -17,7 +17,7 @@ class AreasController < ApplicationController
 		@voivodeship = Voivodeship.find(params[:voivodeship_id])
 		@area = @voivodeship.areas.find(params[:id])
 		
-		Vote.delete_all(area_id = @area.id)  #delete all votes in this area
+		#Vote.delete_all(area_id = @area.id)  #delete all votes in this area
 		@area.destroy
 
 		redirect_to voivodeship_path(@voivodeship)
@@ -28,9 +28,16 @@ class AreasController < ApplicationController
 		@area = @voivodeship.areas.find(params[:id])
 
 		@vote = Vote.select('area_id, commitee_id, sum(number) as sum').where(area_id: @area.id).group('area_id, commitee_id').order('sum DESC')
-		@sumv = Vote.where(area_id: @area.id).sum(:number)
+		
 
-		@suma = @area.empty_votes + @area.incorrect_votes + @sumv.to_i
+		@sumv = Vote.where(area_id: @area.id).sum(:number)
+        
+
+        if @area.empty_votes or @area.incorrect_votes or @sumv.to_i != 0
+			@suma = @area.empty_votes + @area.incorrect_votes + @sumv.to_i
+		else
+			@suma = 0
+		end
 	#a	@votess = Vote.where(area_id: @area.id).group('commitee_id').sum(:number)
 		if @voivodeship.commitees.length == 0
    		@assosciated_commitees = "None"

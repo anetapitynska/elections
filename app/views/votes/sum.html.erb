@@ -2,7 +2,7 @@
 
 <h1>Results ordered by committe & area</h1>
 
-<table>
+  <table class="table table-striped">
   <thead>
     <tr>
       <th>Number of votes</th>
@@ -27,12 +27,19 @@
 </table>
 <br><br>
 
-<%= Vote.sum(:number) %> <br> <br>
-<%= Vote.group('commitee_id','area_id').sum(:number) %> <br> <br>
 
-<%= Vote.group(:commitee_id , :area_id).sum(:number) %> <br> <br>
-<%= Vote.group('commitee_id').sum(:number) %>  <br> <br>
-<h3> order by votes & commitee </h3>
+<% if false %>
+
+  <%= Vote.sum(:number) %> <br> <br>
+  <%= Vote.group('commitee_id','area_id').sum(:number) %> <br> <br>
+
+  <%= Vote.group(:commitee_id , :area_id).sum(:number) %> <br> <br>
+  <%= Vote.group('commitee_id').sum(:number) %>  <br> <br>
+  <h3> order by votes & commitee </h3>
+
+
+<% end %>
+
 
 
 

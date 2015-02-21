@@ -1,4 +1,5 @@
-<p>
+<div id="page_wrapper">
+  <p>
   <strong>Joined on:</strong>
   <%= @joined_on %>
 </p>
@@ -30,15 +31,16 @@
   <%= @user.email %>
 </p>
 
-<p>
-  <strong>Area:</strong>
- 
   <% if @user.area_id.present? == true
-   %>  <%= @user_area.name %>
-   <%= @user_voivodeship.name %>
+   %> <p>
+  <strong>Area:</strong> <%= @user_area.name %></p>
+<p>
+  <strong>Voivodeship:</strong> 
+   <%= @user_voivodeship.name %> </p>
   <% end %>
 
-</p>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<%= link_to 'Edit', edit_user_path(@user), class: "button"  %> 
+<%= link_to 'Delete', @user, method: :delete, data: { confirm: 'Are you sure?' }, class: "button" %></td>
+<%= link_to 'Back', users_path, class: "button" %>
+</div>
