@@ -1,6 +1,14 @@
 <div id="page_wrapper">
-<%= link_to 'Edit', edit_voivodeship_area_path(@voivodeship, @area), class: "button" %>
+
+<% if current_user.role.name == "admin" or current_user.area_id.to_i == @area.id %>
+
+<%= link_to 'Edit', edit_voivodeship_area_path(@voivodeship, @area), class: "button" %> <% end %>
+
+<% if current_user.role.name == "admin" %>
+
 <%= link_to 'Delete', voivodeship_area_path(@voivodeship, @area), method: :delete, data: { confirm: 'Are you sure?' } ,class: "button" %>
+
+<% end %>
 
 <h1 class="voivodeship_name">
 	<%= @area.name %> 

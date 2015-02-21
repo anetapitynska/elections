@@ -9,17 +9,18 @@
 			<% end %>
 		</ul>
 	<% end %>
-<p>
+<div class: "form-group">
 	<%= f.label :name %> <br>
-	<%= f.text_field :name %>
-</p>
+	<%= f.text_field :name,  class: "form-control" %>
+</div>
 
-<p>
+<div class: "form-group">
 	<%= f.label :seats %> <br>
-	<%= f.text_field :seats %>
-</p>
+	<%= f.number_field :seats ,  class: "form-control" %>
+</div>
+</div>
 
-<p>
+<div class: "form-group">
 	<%= f.submit %>
-</p>
+</div>
 <% end %>

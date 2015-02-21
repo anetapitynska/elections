@@ -14,39 +14,33 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :role_id %><br>
-    <%= collection_select(:user, :role_id, Role.all, :id, :name, {prompt: true}) %>
-  </div>
-
-  <div class="field">
-    <%= f.label :area_id %><br>
-    <%= collection_select(:user, :area_id, Area.all, :id, :name, {prompt: true}) %>
-  </div>
-
-
-  <div class="field">
-  <%= f.label :email %><br>
-  <%= f.text_field :email %>
+<div class="form-group">
+  <%= f.label :name %><br />
+  <%= f.text_field :name, class: "form-control" %>
 </div>
 
+  <div class="form-group">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, class: "form-control" %>
+  </div>
+
+   <div class="form-group">
+    <%= f.label :role_id, "Rola" %><br>
+    <%= collection_select(:user, :role_id, Role.all, :id, :name, {prompt: true}, class: "form-control") %>
+  </div>
 
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :password %>
     <% if @validatable %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+    <%= f.password_field :password, autocomplete: "off" , class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    <%= f.password_field :password_confirmation, autocomplete: "off" , class: "form-control"%>
   </div>
 
   <div class="actions">

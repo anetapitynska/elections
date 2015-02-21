@@ -5,16 +5,20 @@ class Ability
     user ||= User.new # guest user
  
     if user.role.name == "admin"
-      can :manage, :all
+      can :manage, [Area, Voivodeship, Commitee, User, Role]
+      can [:add, :update, :destroy , :sum], Vote
+      cannot :add, Vote
     end
     if user.role.name == "area_member"
-      can :manage, Voivodeship
-      can :manage, Area do |a|
+      can :read, Voivodeship
+      can [:read, :update], Area do |a|
         a.id.to_s == user.area_id.to_s
       end
+      can :manage, Vote
     end
     if user.role.name == "central_member"
-      can :read, [Voivodeship, Area]
+      can :read, [Voivodeship, Area, Commitee]
+      can [:read, :sum], Vote
     else
       can :read, :all
     end

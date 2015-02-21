@@ -1,7 +1,11 @@
 <div id="page_wrapper">
 
+<% if current_user.role.name == "admin" %>
+
 	<%= link_to 'Edit', edit_voivodeship_path(@voivodeship), class: "button" %>
 	<%= link_to 'Delete', voivodeship_path(@voivodeship), method: :delete, data: { confirm: 'Are you sure?' } ,class: "button" %>
+
+<% end %>
 
 	<h1 class="voivodeship_name">
 		<%= @voivodeship.name %>
@@ -67,9 +71,17 @@
 	<br>
 
 
+		
+
 		<%= render @voivodeship.areas %>
+
+<% if current_user.role.name == "admin" %>
+
 		<h3>Add an electorial area</h3>
 		<%= render "areas/form" %>
+
+		<% end %>
+
 
 	</div>
 

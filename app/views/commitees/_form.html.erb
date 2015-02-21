@@ -9,24 +9,27 @@
 			<% end %>
 		</ul>
 	<% end %>
-<p>
+<div class: "form-group">
 	<%= f.label :name %> <br>
-	<%= f.text_field :name %>
-</p>
-<p>
+	<%= f.text_field :name , class: "form-control"%>
+</div>
+<div class: "form-group">
 	<%= f.label :image %> <br>
 	<%= f.file_field :image %>
-</p>
+</div>
+
+<div class: "form-group">
+<%= f.label :voivodeship %> <br>
 
 <% for voivodeship in Voivodeship.all %>
-
 <div>
+
   <%= check_box_tag "commitee[voivodeship_ids][]", voivodeship.id, @commitee.voivodeship_ids.include?(voivodeship.id) %>
  
   <%= voivodeship.name %>
 </div>
 <% end %>
-
+</div>
 
 <p>
 	<%= f.submit %>

@@ -7,6 +7,7 @@
 
 				<%= link_to 'Show', voivodeship_area_path(area.voivodeship, area), class: "button" %>
 
+		<% if current_user.role.name == "admin" %>
 				<%= link_to 'Edit', edit_voivodeship_area_path(area.voivodeship, area), class: "button" %>
 				
 			     <%= link_to 'Delete', [area.voivodeship, area],
@@ -17,7 +18,7 @@
 			</p>
 
 
-
+<% end %>
 
 
 	</div>

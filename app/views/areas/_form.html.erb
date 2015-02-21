@@ -1,35 +1,38 @@
 <%= form_for([@voivodeship, @voivodeship.areas.build]) do |f| %>
-<p>
+<div class="form-group">
 	<%= f.label :name %> <br>
-	<%= f.text_field :name  %>
-</p>
+	<%= f.text_field :name, class: "form-control"%>
+</div>
 
-<p>
+<div class: "form-group">
 	<%= f.label :number %> <br>
-	<%= f.text_field :number %>
-</p>
+	<%= f.number_field :number, class: "form-control"%>
 
-<p>
+
+<div class: "form-group">
 	<%= f.label :people %> <br>
-	<%= f.text_field :people %>
-</p>
+	<%= f.number_field :people , class: "form-control"%>
+</div>
 
-<p>
+<div class: "form-group">
 	<%= f.label :ballots %> <br>
-	<%= f.text_field :ballots %>
-</p>
+	<%= f.number_field :ballots, class: "form-control"%>
+</div>
 
-<p>
+
+<div class="form-group">
 	<%= f.label :empty_votes %> <br>
-	<%= f.number_field :empty_votes %>
-</p>
-<p>
+	<%= f.number_field :empty_votes , class: "form-control"%>
+</div>
+
+<div class: "form-group">
 	<%= f.label :incorrect_votes %> <br>
-	<%= f.text_field :incorrect_votes %>
-</p>
-<p>
+	<%= f.number_field :incorrect_votes, class: "form-control"%>
+
+<div class: "form-group">
 	<%= f.submit %>
-</p>
+</div>
+
 
 <% end %>
 
