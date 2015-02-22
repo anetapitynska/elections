@@ -4,17 +4,33 @@ class ApplicationController < ActionController::Base
   #check_authorization :unless => :devise_controller?
 
 	protect_from_forgery with: :exception
-	rescue_from CanCan::AccessDenied do |exception|
+	#rescue_from ActiveRecord::RecordNotFound, :with => :record_not_found
+  rescue_from CanCan::AccessDenied do |exception|
 	 flash[:error] = "Access denied!"
 	 redirect_to root_url
 	end
   
 	before_filter :configure_permitted_parameters, if: :devise_controller?
+	
+	def not_found
+	  flash[:error] = "The page you were looking for doesn't exist"
+	    redirect_to root_url
+	end
+
+  private
+	  def record_not_found
+	  	flash[:error] = "The page you were looking for doesn't exist RecordNotFound"
+	    redirect_to root_url
+	  end
 
 	protected
-		def configure_permitted_parameters
-  	devise_parameter_sanitizer.for(:sign_up) << :name
-  	devise_parameter_sanitizer.for(:account_update) << :name
-	end
- 
+			def configure_permitted_parameters
+	  	devise_parameter_sanitizer.for(:sign_up) << :name
+	  	devise_parameter_sanitizer.for(:account_update) << :name
+		end
+	 
+
+
+
+
 end

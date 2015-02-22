@@ -1,6 +1,8 @@
 class RolesController < InheritedResources::Base
-load_and_authorize_resource
-before_filter :authenticate_user!
+  before_filter :authenticate_user!
+  load_and_authorize_resource
+
+
   
 def show
   if @role.users.length == 0

@@ -47,6 +47,20 @@ class VotesController < InheritedResources::Base
   end
 
   def edit
+    @user = current_user
+    @area_id = @user.area_id
+    if @area_id.present? == true 
+        @user_area = Area.find(@area_id)
+        @voivodeship_id = @user_area.voivodeship_id
+        @user_voivodeship = Voivodeship.find(@voivodeship_id)
+        @com = Commitee.where(voivodeship_id: @user_voivodeship.id)
+        if @user_voivodeship.commitees.length == 0
+          @assosciated_commitees = "None"
+        else
+          @assosciated_commitees = @user_voivodeship.commitees.map(&:id)
+        end
+    end
+
     @vote = Vote.find(params[:id])
   end
 
@@ -57,19 +71,29 @@ class VotesController < InheritedResources::Base
         format.html { redirect_to @vote, notice: 'Vote was successfully created.' }
         format.json { render :show, status: :created, location: @vote }
       else
-        format.html { render :new }
-        format.json { render json: @vote.errors, status: :unprocessable_entity }
+        @area_id = current_user.area_id
+        @area = Area.find(@area_id)
+        @voivodeship_id = @area.voivodeship_id
+        format.html { redirect_to voivodeship_area_url(@voivodeship_id, @area_id) , notice: 'Edit exsiting votes for this area and committee'}
+       # format.json { render json: @vote.errors, status: :unprocessable_entity }
       end
     end
   end
 
   def update
-    @user = User.find params[:id]
+    
+    @user = current_user
     @area_id = @user.area_id
     if @area_id.present? == true 
         @user_area = Area.find(@area_id)
         @voivodeship_id = @user_area.voivodeship_id
         @user_voivodeship = Voivodeship.find(@voivodeship_id)
+        @com = Commitee.where(voivodeship_id: @user_voivodeship.id)
+        if @user_voivodeship.commitees.length == 0
+          @assosciated_commitees = "None"
+        else
+          @assosciated_commitees = @user_voivodeship.commitees.map(&:id)
+        end
     end
 
     @vote = Vote.find(params[:id])

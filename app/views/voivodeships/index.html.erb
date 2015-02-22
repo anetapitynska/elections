@@ -1,5 +1,15 @@
+<div class="voivodeship_wrapper">
+<h1> Województwa </h1>
 
 
+<% if current_user.role.name == "admin" %>
+
+<button class="button">
+<%= link_to 'New Voivodeship', new_voivodeship_path %> </button> 
+<br><br>
+<% end %>
+
+</div>
 <% @voivodeships.each do |voivodeship| %>
 		<div class="voivodeship_wrapper">
 			<h2 class="name"><%= link_to voivodeship.name, voivodeship %>  </h2>
@@ -9,7 +19,3 @@
 
 <br>
 
-<div id="page_wrapper">
-<button class="button">
-<%= link_to 'New Voivodeship', new_voivodeship_path %> </button> 
-</div>

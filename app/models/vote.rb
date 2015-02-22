@@ -5,7 +5,7 @@ class Vote < ActiveRecord::Base
   validates :area, presence: true
   validates :number, presence: true
 
- # validates :commitee, :area,  uniqueness: {scope: [:commitee, :area] }
-
-
+  validates :commitee, :area,  uniqueness: {scope: [:commitee, :area] }
+  #validates :commitee, uniqueness: {scope: :area}
+  #validates_uniqueness_of :commitee, :scope => :area
 end

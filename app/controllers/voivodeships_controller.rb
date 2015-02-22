@@ -23,8 +23,10 @@ class VoivodeshipsController < ApplicationController
 	end
 
 	def show
+
 		@voivodeship = Voivodeship.find(params[:id]) 
 		@vote = Vote.select('area_id, commitee_id, sum(number) as sum').group('area_id, commitee_id').order('sum DESC')
+		@votea = Vote.select('area_id, commitee_id, number').order('number DESC')
 
   	if @voivodeship.commitees.length == 0
   		@assosciated_commitees = "None"
@@ -48,7 +50,7 @@ class VoivodeshipsController < ApplicationController
 
 	def destroy
 		@voivodeship = Voivodeship.find(params[:id])
-	  Area.delete_all(voivodeship_id = @voivodeship.id)  #delete all areas in this voivodeships
+	 
 		@voivodeship.destroy
 		redirect_to voivodeships_path
 	end

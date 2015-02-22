@@ -6,21 +6,24 @@ class Ability
  
     if user.role.name == "admin"
       can :manage, [Area, Voivodeship, Commitee, User, Role]
-      can [:add, :update, :destroy , :sum], Vote
-      cannot :add, Vote
+      can [:read, :destroy , :sum], Vote
+      cannot [:create, :update], Vote
     end
     if user.role.name == "area_member"
       can :read, Voivodeship
       can [:read, :update], Area do |a|
         a.id.to_s == user.area_id.to_s
       end
-      can :manage, Vote
+      can [:read, :create], Vote
+      can [:update, :destroy], Vote do |v|
+        v.area_id.to_s == user.area_id.to_s
+      end
     end
     if user.role.name == "central_member"
       can :read, [Voivodeship, Area, Commitee]
       can [:read, :sum], Vote
     else
-      can :read, :all
+      can :read, :welcome
     end
   end
     # Define abilities for the passed in user here. For example:

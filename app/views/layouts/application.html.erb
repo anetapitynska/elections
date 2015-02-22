@@ -32,11 +32,23 @@
 
 	<div id="main_content">
 		<div id="header">
-			<p>Elections Application </p>
+
+			<% if user_signed_in? %>	
+				<p> Welcome <%= current_user.name %>! Rola: <%= current_user.role.name %> Area: <%= current_user.area_id %> </p>
+			
+			<% else %>
+
+			<p>Elections Application </p> 
+
+<% end %>
+
 
 			<div class="buttons">
+
+
+
 			<% if user_signed_in? %>
-			Welcome <%= current_user.name %>! Rola: <%= current_user.role.name %> Area: <%= current_user.area_id %> <button class="button">	<%= link_to "Edit your profile", edit_user_registration_path %></button>
+			<button class="button">	<%= link_to "Edit your profile", edit_user_registration_path %></button>
 			<button class="button">	<%= link_to "Log out", destroy_user_session_path, :method => :delete %></button>
 			<% else %><button class="button">	<%= link_to "Sign up", new_user_registration_path %></button>
 			<button class="button">	<%= link_to "Sign in", new_user_session_path %></button><% end %>
@@ -45,12 +57,14 @@
 
 		</div>
 
+<div class="voivodeship_wrapper msg">
 
-
- 
 <% flash.each do |name, msg| %>
-  <%= content_tag :div, msg, id: "flash_#{name}" %>
+  <h3> <%= content_tag :div, msg, id: "flash_#{name}" %> </h3>
 <% end %>
+
+ </div>
+
 	<%= yield %>
 	
 	</div>

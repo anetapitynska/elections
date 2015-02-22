@@ -9,7 +9,9 @@
 <%= link_to 'Delete', voivodeship_area_path(@voivodeship, @area), method: :delete, data: { confirm: 'Are you sure?' } ,class: "button" %>
 
 <% end %>
-
+<% if current_user.area_id.to_i == @area.id %>
+<%= link_to 'New Vote', new_vote_path, class: "button" %>
+<% end %>
 <h1 class="voivodeship_name">
 	<%= @area.name %> 
 </h1>
@@ -56,7 +58,36 @@
 	</table>
 
 
+<% if current_user.area_id.to_i == @area.id %>
 
+  <table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Number</th>
+          <th>Area</th>
+              <th>Commitee</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @votea.each do |vote| %>
+      <% if vote.area.voivodeship_id == @voivodeship.id %>
+      <tr>
+        <td><%= vote.number %></td>
+        <td><%= vote.area.name%></td>
+        <td><%= vote.commitee.name %></td>    
+        <td><%= link_to 'Show', vote %></td>
+        <td><%= link_to 'Edit', edit_vote_path(vote) %></td>
+        <td><%= link_to 'Destroy', vote, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+   
+        <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<br><br>
+<% end %>
 
 <%= pie_chart Vote.where(area_id: @area.id).group('commitee_id').sum(:number) %>
 

@@ -1,6 +1,10 @@
-<p id="notice"><%= notice %></p>
+<div class="voivodeship_wrapper">
 
 <h1>Results ordered by committe & area</h1>
+
+</div>
+
+<div id="page_wrapper">
 
   <table class="table table-striped">
   <thead>
@@ -47,7 +51,7 @@
 <%= pie_chart Vote.group('commitee_id').sum(:number) %>
 
 
-
+</div>
 
  
 <br>

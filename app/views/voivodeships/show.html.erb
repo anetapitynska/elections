@@ -1,18 +1,31 @@
+<div class="voivodeship_wrapper">
+
+
+	<h1 class="voivodeship_name">
+		<%= @voivodeship.name %>
+	</h1>
+
+
+</div>
+
+
+
 <div id="page_wrapper">
 
 <% if current_user.role.name == "admin" %>
 
 	<%= link_to 'Edit', edit_voivodeship_path(@voivodeship), class: "button" %>
 	<%= link_to 'Delete', voivodeship_path(@voivodeship), method: :delete, data: { confirm: 'Are you sure?' } ,class: "button" %>
+	<br>
+	<br>
+
 
 <% end %>
 
-	<h1 class="voivodeship_name">
-		<%= @voivodeship.name %>
-	</h1>
-
 <p><strong>Seats in the Regional Assembly: </strong> <%= @voivodeship.seats %> </p>
 <p><strong> Committees: </strong>  <%= @assosciated_commitees %> </p>
+
+
 
 
 	<h2>Results </h2>
@@ -42,11 +55,11 @@
 	  </tbody>
 	</table>
 
+
 	<!-- 	(Submitted <%= time_ago_in_words(@voivodeship.created_at) %> Ago) -->
 
 	<h2>Voter turnout</h2>
 <%= pie_chart @voivodeship.areas.group(:name).sum(:ballots) %>
-
 
 
 

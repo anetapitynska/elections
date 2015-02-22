@@ -28,7 +28,7 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
 	color: red;
-	font-size: 4em;
+	font-size: 3em;
 		
 }
 
@@ -39,6 +39,20 @@ a {
 				 text-decoration: none;
 				 color: red;
 				}
+}
+
+.msg {
+	p {
+	color: red !important;
+	}
+
+	h3 {
+	color: black;
+	text-decoration: underline;
+
+
+}
+
 }
 
 #sidebar {
@@ -101,7 +115,7 @@ a {
 	background: transparent;
 	border: 1px solid #d6dce0;
 	padding: .5em 1.5em;
-	border-radius: 1.5em;
+	border-radius: 0.5em;
 	&:hover {
 		border: 1px solid red;
 		color: red;

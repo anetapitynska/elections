@@ -88,5 +88,6 @@ get 'sum' => 'votes#sum', :name=> 'suma'
   #     resources :products
   #   end
 
+get '*unmatched_route', to: 'application#not_found'
 
 end
