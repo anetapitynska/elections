@@ -17,7 +17,7 @@ class AreasController < ApplicationController
 		@voivodeship = Voivodeship.find(params[:voivodeship_id])
 		@area = @voivodeship.areas.find(params[:id])
 		
-		#Vote.delete_all(area_id = @area.id)  #delete all votes in this area
+		
 		@area.destroy
 
 		redirect_to voivodeship_path(@voivodeship)

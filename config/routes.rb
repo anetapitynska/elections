@@ -20,7 +20,6 @@ devise_for :users
   ActiveAdmin.routes(self)
   resources :voivodeships do
     resources :areas
-    
   end
 
   resources :commitees

@@ -36,7 +36,7 @@
 	    <tr>
 	      <th>Ilość głosów</th>
 	        <th>Procent</th>
-	      <th>Okręg</th>
+
 	      <th>Komitet</th>
 	 
 	      <th colspan="3"></th>
@@ -47,20 +47,21 @@
 
 
 	    <% @vote.each do |vote| %>
-	        <% if vote.area.voivodeship_id == @voivodeship.id %>
+	       
 	      <tr>
 	        <td><%= vote.sum %></td>
 	        <td><%= @percent = (vote.sum.to_f / @sum_all.to_f) * 100
-	        		@percent.round %> %</td>
-	        <td><%= vote.area.name %></td>
+	        		@percent.round(2) %> %</td>
 	        <td><%= vote.commitee.name %></td>	        
 	      </tr>
-	         <% end %>
+	       
 	   <% end %>
 	  </tbody>
 	</table>
 
 
+	<%= pie_chart @correct.sum(:number) %>
+ 
 	<!-- 	(Submitted <%= time_ago_in_words(@voivodeship.created_at) %> Ago) -->
 
 	<h2>Frekwencja w poszczególnych okręgach</h2>

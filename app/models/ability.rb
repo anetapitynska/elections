@@ -20,7 +20,7 @@ class Ability
     end
     if user.role.name == "central_member"
       can :read, [Voivodeship, Area, Commitee]
-      can [:read, :sum], Vote
+      can [:read, :sum, :sum_voivodeships], Vote
     else
       can :read, :welcome
     end

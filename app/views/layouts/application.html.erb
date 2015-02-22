@@ -19,7 +19,7 @@
 
 		<ul>
 			<li class="category">Państwowa Komisja Wyborcza</li>			
-
+<% if user_signed_in? %>
 		<% if current_user.role.name == "central_member" or current_user.role.name == "admin"  %>
 				<li><%= link_to "Województwa", voivodeships_path %></li>
 				<li><%= link_to "Komitety wyborcze", commitees_path %></li>
@@ -33,7 +33,7 @@
 			<li><%= link_to "Użytkownicy", users_path %></li>
 			<li><%= link_to "Role", roles_path %></li>
 		<% end %>
-					</ul>
+			<% end %>			</ul>
 
 
 	</div>
@@ -46,16 +46,9 @@
 
 				 <strong> Rola: </strong> <%= current_user.role.name %>
 
+			
 
-			<% unless current_user.area_id.nil? %>	
-
-				<strong> Okręg: </strong> <%= 
-				 			@a = Area.find(current_user.area_id) 
-				 			@a.name 
-				 		%> 
-
-			<% end %>
-
+		
 
 				</p>
 

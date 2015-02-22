@@ -47,7 +47,7 @@ class CommiteesController < ApplicationController
 
 	def destroy
 		@commitee = Commitee.find(params[:id])
-		Vote.delete_all(commitee_id = @commitee.id)  #delete all votes in this area
+	
 		@commitee.destroy
 		redirect_to commitees_path
 	end

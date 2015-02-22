@@ -5,9 +5,13 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   belongs_to :role
   belongs_to :area
-  validates_presence_of :name
+
   before_save :assign_role
 	
+  validates :name, presence: true, length: { minimum: 5 }, uniqueness: true 
+  
+
+
   def assign_role
     self.role = Role.find_by name: "area_member" if self.role.nil?
   end

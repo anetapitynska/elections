@@ -17,6 +17,7 @@
     <thead>
       <tr>
         <th>Ilość głosów</th>
+        <th>Okręg </th>
         <th>Komitet</th>
    
         <th colspan="2"></th>
@@ -29,7 +30,8 @@
           <% if vote.area.voivodeship_id == voivodeship.id %>
        
         <tr>
-          <td><%= vote.sum %></td>
+          <td><%= vote.number %></td>   
+          <td><%= vote.area.name %></td>
             <td><%= vote.commitee.name %></td>          
         </tr>
            <% end %>

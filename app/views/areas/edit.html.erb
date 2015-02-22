@@ -1,6 +1,19 @@
 <div id="page_wrapper">
 
 <%= form_for([@voivodeship, @area]) do |f| %>
+
+	<% if @area.errors.any? %>
+		<div id="errors">
+			<h2>Nie zapisano. Błędy: <%=@area.errors.count %> </h2>
+		</div>
+		<ul> 
+			<% @area.errors.full_messages.each do |msg| %>
+			<li> <%= msg %></li>
+			<% end %>
+		</ul>
+	<% end %>
+
+
 <div class="form-group">
 	<%= f.label 'Nazwa' %> <br>
 	<%= f.text_field :name, class: "form-control"%>

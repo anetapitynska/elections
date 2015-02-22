@@ -16,10 +16,10 @@
 
 				<button class="button">	<%= link_to "Wyloguj się", destroy_user_session_path, :method => :delete %></button>
 		
-			<% else %>
+				<% else %>
 				<button class="button">	<%= link_to "Zarejestruj się", new_user_registration_path %></button>
 				<button class="button">	<%= link_to "Zaloguj się", new_user_session_path %></button>
-			<% end %>
+				<% end %>
 
 	</div>
 
