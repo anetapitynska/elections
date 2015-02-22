@@ -1,4 +1,4 @@
-<%= form_for @voivodeship do |f| %>
+<%= form_for @voivodeship,  html: { multipart: true } do |f| %>
 	<% if @voivodeship.errors.any? %>
 		<div id="errors">
 			<h2><%= pluralize(@voivodeship.errors.count, "error") %> prevented this voivodeship from saving</h2>
@@ -19,6 +19,10 @@
 	<%= f.number_field :seats ,  class: "form-control" %>
 </div>
 
+<div class: "form-group">
+	<%= f.label :image %> <br>
+	<%= f.file_field :image %>
+</div>
 
 <p>
 	<%= f.submit %>

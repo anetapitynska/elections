@@ -41,7 +41,7 @@ class VoivodeshipsController < ApplicationController
 
 	def update
 		@voivodeship = Voivodeship.find(params[:id])
-		if @voivodeship.update(params[:voivodeship].permit(:name, :seats))
+		if @voivodeship.update(params[:voivodeship].permit(:name, :seats, :image))
 			redirect_to @voivodeship
 		else
 			render 'edit'
@@ -57,7 +57,7 @@ class VoivodeshipsController < ApplicationController
 
 	private
 		def voivodeship_params
-			params.require(:voivodeship).permit(:name, :seats)
+			params.require(:voivodeship).permit(:name, :seats, :image)
 		end
 
 end

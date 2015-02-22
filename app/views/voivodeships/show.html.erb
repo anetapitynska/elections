@@ -2,7 +2,10 @@
 
 
 	<h1 class="voivodeship_name">
-		<%= @voivodeship.name %>
+		<% unless  @voivodeship.image.blank? %>
+			    <%= image_tag @voivodeship.image.url(:thumb) %> 
+			  <% end %>
+			 Województwo <%= @voivodeship.name %>
 	</h1>
 
 
