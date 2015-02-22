@@ -89,7 +89,7 @@
 <br><br>
 <% end %>
 
-<%= pie_chart Vote.where(area_id: @area.id).group('commitee_id').sum(:number) %>
-
+<%= pie_chart Vote.joins(:commitee).where(area_id: @area.id).group(:name).sum(:number) %>
+	
 
 </div>

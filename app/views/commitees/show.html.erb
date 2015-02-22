@@ -1,28 +1,29 @@
-<div id="page_wrapper">
-	
+
+
+<div class="voivodeship_wrapper">
 <h1 class="voivodeship_name">
-	<%= @commitee.name %>
-</h1>
-<strong> Województwa, w których startuje komitet: </strong>
- <%= @assosciated_voivodeships %></br></br>	</br></br>	
-
-
 	 	<% unless  @commitee.image.blank? %>
-			    <%= image_tag @commitee.image.url(:medium) %> 
-	    <% end %>
-</br></br>	
-
-
-</br></br>
-
-</br>
-</br>
-
+			    <%= image_tag @commitee.image.url(:thumb) %> 
+	    <% end %><%= @commitee.name %>
+</h1>
 
 	<%= link_to 'Edytuj', edit_commitee_path(@commitee), class: "button" %>
 	<%= link_to 'Usuń', commitee_path(@commitee), method: :delete, data: { confirm: 'Na pewno usunąć?' } ,class: "button" %>
 
+<br>
+<br>
+</div>
+<div id="page_wrapper">
+<strong> Województwa, w których startuje komitet: </strong>
+ <%= @assosciated_voivodeships %></br></br>	
 
+
+<h3 class="voivodeship_name">
+	Wyniki komitetu <%= @commitee.name %> w różnych okręgach
+</h3>
+
+<%= pie_chart @com_votes %>
+	
 
 
 

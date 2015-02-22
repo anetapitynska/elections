@@ -43,9 +43,8 @@
 
 
 
+<%= pie_chart Vote.joins(:commitee).group('commitee_id, name').sum(:number) %>
 
-
-<%= pie_chart Vote.group('commitee_id').sum(:number) %>
 
 
 </div>

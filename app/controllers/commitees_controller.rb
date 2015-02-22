@@ -25,6 +25,11 @@ class CommiteesController < ApplicationController
 	def show
 		@commitee = Commitee.find(params[:id])
 	  
+		@com_votes = Vote.select('area_id, commitee_id, number').joins(:area).where(commitee_id: @commitee.id).group(:name).sum(:number)
+	#	@com_votes = Vote.select('area_id, commitee_id, number').joins(:voivodeship).where(area_ids: 'area_id').group(:name).sum(:number)
+		#@com_votes = @co_votes.joins(:voivodeships).group(:name)
+
+
 	  if @commitee.voivodeships.length == 0
 	    @assosciated_voivodeships = "None"
 	  else

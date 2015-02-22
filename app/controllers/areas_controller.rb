@@ -57,7 +57,7 @@ class AreasController < ApplicationController
 		@voivodeship = Voivodeship.find(params[:voivodeship_id])
 		@area = @voivodeship.areas.find(params[:id])
 		if @area.update(params[:area].permit(:name, :people, :number,  :empty_votes, :incorrect_votes, :ballots))
-			redirect_to @voivodeship
+			redirect_to voivodeship_area_url(@voivodeship.id, @area.id)
 		else
 			render 'edit'
 		end

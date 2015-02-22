@@ -31,8 +31,10 @@ class VoivodeshipsController < ApplicationController
 	def show
 
 		@voivodeship = Voivodeship.find(params[:id]) 
-		@correct = Vote.select('area_id, commitee_id, number').where(area_id: @voivodeship.areas).group(:commitee_id)
-		
+		@correct = Vote.select('area_id, commitee_id, number').joins(:commitee).where(area_id: @voivodeship.areas).group(:name)
+	
+
+
   		@sum_correct = Vote.select('area_id, commitee_id, number').where(area_id: @voivodeship.areas).sum(:number)
   		@sum_incorrect = Area.select('id, incorrect_votes').where(id: @voivodeship.areas).sum(:incorrect_votes)
   		@sum_empty = Area.select('id, empty_votes').where(id: @voivodeship.areas).sum(:empty_votes)

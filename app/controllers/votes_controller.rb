@@ -3,17 +3,15 @@ class VotesController < InheritedResources::Base
   load_and_authorize_resource
 
   def index
-    @votes = Vote.all
+    @votes = Vote.all.sort_by { |a| -(a.number.to_i) }
   end
 
   def show
     @vote = Vote.find(params[:id])
-   # @sum = Vote.sum(:number)
   end
 
   def sum_voivodeships
-    @vote = Vote.select('area_id, commitee_id, number').order('number DESC')
-   
+    @vote = Vote.select('area_id, commitee_id, number').sort_by { |a| -(a.number.to_i) }
     
 
     @voivodeships = Voivodeship.all.order('name ASC')
@@ -74,7 +72,10 @@ class VotesController < InheritedResources::Base
     @vote = Vote.new(vote_params)
     respond_to do |format|
       if @vote.save
-        format.html { redirect_to @vote, notice: 'Głosy zostały dodane.' }
+        @area_id = current_user.area_id
+        @area = Area.find(@area_id)
+        @voivodeship_id = @area.voivodeship_id
+        format.html { redirect_to voivodeship_area_url(@voivodeship_id, @area_id), notice: 'Głosy zostały dodane.' }
         format.json { render :show, status: :created, location: @vote }
       else
         @area_id = current_user.area_id
@@ -118,7 +119,7 @@ class VotesController < InheritedResources::Base
     @vote = Vote.find(params[:id])
     @vote.destroy
     respond_to do |format|
-      format.html { redirect_to votes_url, notice: 'Głosy zostały usunięte.' }
+      format.html { redirect_to :back, notice: 'Głosy zostały usunięte.' }
       format.json { head :no_content }
     end
   end
