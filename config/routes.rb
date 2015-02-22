@@ -26,11 +26,11 @@ devise_for :users
 
   authenticated :user do
       resources :voivodeships
-    root :to => 'voivodeships#index', as: :authenticated_root
+    root :to => 'welcome#index', as: :authenticated_root
   end
   root :to => 'welcome#index'
   
- 
+get 'sum_voivodeships' => 'votes#sum_voivodeships', :name=> 'sumav'
 get 'sum' => 'votes#sum', :name=> 'suma'
   
   # The priority is based upon order of creation: first created -> highest priority.

@@ -1,19 +1,19 @@
 	<div class="voivodeship_wrapper">
 			<h4><%= area.name %></h4>
-			<p class="comment_name"> <strong>Electorial area No. </strong> <%= area.number %> </p>
-			<p class="comment_body"><strong> People allowed to vote: </strong><%= area.people %> </p>
+			<p class="comment_name"> <strong>Okręg wyborczy nr </strong> <%= area.number %> </p>
+			<p class="comment_body"><strong> Ilość osób uprawnionych do głosowania: </strong><%= area.people %> </p>
 			<p>
 
 
-				<%= link_to 'Show', voivodeship_area_path(area.voivodeship, area), class: "button" %>
+				<%= link_to 'Pokaż', voivodeship_area_path(area.voivodeship, area), class: "button" %>
 
 		<% if current_user.role.name == "admin" %>
-				<%= link_to 'Edit', edit_voivodeship_area_path(area.voivodeship, area), class: "button" %>
+				<%= link_to 'Edytuj', edit_voivodeship_area_path(area.voivodeship, area), class: "button" %>
 				
-			     <%= link_to 'Delete', [area.voivodeship, area],
+			     <%= link_to 'Usuń', [area.voivodeship, area],
 					method: :delete,
 					class: "button",
-					data: { confirm: 'Are you sure?' } %>
+					data: { confirm: 'Na pewno usunąć?' } %>
 
 			</p>
 

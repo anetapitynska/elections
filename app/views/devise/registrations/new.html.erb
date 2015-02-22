@@ -1,27 +1,25 @@
 <div id="page_wrapper">
-<h2>Sign up</h2>
+<h2>Zarejestruj się</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
 <div class="form-group">
-  <%= f.label :name %><br />
+  <%= f.label 'Nazwa' %><br />
   <%= f.text_field :name, class: "form-control" %>
 </div>
 
   <div class="form-group">
-    <%= f.label :email %><br />
+    <%= f.label 'E-mail' %><br />
     <%= f.email_field :email, autofocus: true, class: "form-control" %>
   </div>
 
-   <div class="form-group">
-    <%= f.label :role_id, "Rola" %><br>
-    <%= collection_select(:user, :role_id, Role.all, :id, :name, {prompt: true}, class: "form-control") %>
-  </div>
+
+
 
 
   <div class="form-group">
-    <%= f.label :password %>
+    <%= f.label 'Hasło' %>
     <% if @validatable %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
@@ -29,12 +27,12 @@
   </div>
 
   <div class="form-group">
-    <%= f.label :password_confirmation %><br />
+    <%= f.label 'Potwierdź hasło' %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" , class: "form-control"%>
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "Zapisz" %>
   </div>
 <% end %>
 

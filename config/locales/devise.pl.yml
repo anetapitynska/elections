@@ -33,8 +33,8 @@ pl:
       updated: "Twoje hasło zostało zmienione. Zostałeś pomyślnie zalogowany."
       updated_not_active: "Twoje hasło zostało zmienione."
     registrations:
-      destroyed: "Do widzenia! Twoje konto zostało usunięte."
-      signed_up: "Witaj! Zarejestrowałeś się pomyślnie."
+      destroyed: "Konto zostało usunięte."
+      signed_up: "Dodanie użytkownika przebiegło pomyślnie"
       signed_up_but_inactive: "Zarejestrowałeś się pomyślnie. Niemniej jednak nie zostałeś zalogowany, ponieważ Twoje konto nie zostało jeszcze aktywowane."
       signed_up_but_locked: "Zarejestrowałeś się pomyślnie. Niemniej jednak nie zostałeś zalogowany, ponieważ Twoje konto zostało zablokowane."
       signed_up_but_unconfirmed: "Wiadomość email z instrukcją aktywacji konta została przesłana na Twój adres email. Użj linku z emaila aby aktywować konto."

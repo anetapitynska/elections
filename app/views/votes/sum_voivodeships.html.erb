@@ -1,0 +1,57 @@
+<div class="voivodeship_wrapper">
+
+<h1>Zbiorcze wyniki wyborów dla województw</h1>
+
+</div>
+
+<div id="page_wrapper">
+
+ 
+<% @voivodeships.each do |voivodeship| %>
+    
+ <h4> <%= link_to 'Województwo ' + voivodeship.name,  voivodeship %> </h4>
+
+       
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Ilość głosów</th>
+        <th>Komitet</th>
+   
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+
+    <tbody> 
+
+      <% @vote.each do |vote| %>
+          <% if vote.area.voivodeship_id == voivodeship.id %>
+       
+        <tr>
+          <td><%= vote.sum %></td>
+            <td><%= vote.commitee.name %></td>          
+        </tr>
+           <% end %>
+     <% end %>
+    </tbody>
+  </table>
+
+  
+  
+   
+<% end %>
+
+
+
+
+
+
+
+
+
+
+</div>
+
+ 
+<br>

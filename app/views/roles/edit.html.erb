@@ -1,6 +1,9 @@
-<h1>Editing Role</h1>
+<div id="page_wrapper">
 
+<h1>Edytuj rolę</h1>
+<%= link_to 'Show', @role, class: "button" %> 
+<%= link_to 'Back', roles_path , class: "button" %>
+<br><br><br>
 <%= render 'form' %>
 
-<%= link_to 'Show', @role %> |
-<%= link_to 'Back', roles_path %>
+</div>

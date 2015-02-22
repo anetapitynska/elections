@@ -1,7 +1,7 @@
 <%= form_for @commitee,  html: { multipart: true } do |f| %>
 	<% if @commitee .errors.any? %>
 		<div id="errors">
-			<h2><%= pluralize(@commitee.errors.count, "error") %> prevented this commitee  from saving</h2>
+			<h2>Nie zapisano. Błędy: <%= @commitee.errors.count %> </h2>
 		</div>
 		<ul> 
 			<% @commitee.errors.full_messages.each do |msg| %>
@@ -10,16 +10,17 @@
 		</ul>
 	<% end %>
 <div class: "form-group">
-	<%= f.label :name %> <br>
+	<%= f.label 'Nazwa' %> <br>
 	<%= f.text_field :name , class: "form-control"%>
 </div>
+<br>
 <div class: "form-group">
-	<%= f.label :image %> <br>
+	<%= f.label 'Logo' %> <br>
 	<%= f.file_field :image %>
 </div>
-
+<br>
 <div class: "form-group">
-<%= f.label :voivodeship %> <br>
+<%= f.label 'Województwa, w których startuje komitet' %> <br>
 
 <% for voivodeship in Voivodeship.all %>
 <div>
@@ -30,8 +31,8 @@
 </div>
 <% end %>
 </div>
-
+<br>
 <p>
-	<%= f.submit %>
+	<%= f.submit 'Zapisz'%>
 </p>
 <% end %>

@@ -1,36 +1,37 @@
 <%= form_for([@voivodeship, @voivodeship.areas.build]) do |f| %>
+
 <div class="form-group">
-	<%= f.label :name %> <br>
+	<%= f.label 'Nazwa' %> <br>
 	<%= f.text_field :name, class: "form-control"%>
 </div>
 
 <div class: "form-group">
-	<%= f.label :number %> <br>
-	<%= f.number_field :number, class: "form-control"%>
-
-
-<div class: "form-group">
-	<%= f.label :people %> <br>
-	<%= f.number_field :people , class: "form-control"%>
+	<%= f.label "Numer" %> <br>
+	<%= f.number_field :number, class: "form-control"%> <br>
 </div>
 
 <div class: "form-group">
-	<%= f.label :ballots %> <br>
-	<%= f.number_field :ballots, class: "form-control"%>
+	<%= f.label "Ilość osób uprawnionych do głosowania" %> <br>
+	<%= f.number_field :people , class: "form-control"%> <br>
 </div>
 
+<div class: "form-group">
+	<%= f.label "Ilość wydanych kart wyborczych"  %> <br>
+	<%= f.number_field :ballots, class: "form-control"%> <br>
+</div>
 
 <div class="form-group">
-	<%= f.label :empty_votes %> <br>
-	<%= f.number_field :empty_votes , class: "form-control"%>
+	<%= f.label "Ilość pustych głosów" %> <br>
+	<%= f.number_field :empty_votes, class: "form-control"%> 
 </div>
 
 <div class: "form-group">
-	<%= f.label :incorrect_votes %> <br>
-	<%= f.number_field :incorrect_votes, class: "form-control"%>
+	<%= f.label "Ilość niepoprawnych głosów" %> <br>
+	<%= f.number_field :incorrect_votes, class: "form-control"%> 
+</div>
 
 <div class: "form-group">
-	<%= f.submit %>
+	<br><%= f.submit "Wyślij" %>
 </div>
 
 

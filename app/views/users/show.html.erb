@@ -1,46 +1,42 @@
 <div id="page_wrapper">
-  <p>
-  <strong>Joined on:</strong>
-  <%= @joined_on %>
-</p>
 <p>
-  <strong>Last logged in on:</strong>
-  <%= @last_login %>
-</p>
-<p>
-  <strong>No. times logged in:</strong>
-  <%= @user.sign_in_count %>
-</p>
-<p>
-  <strong>Name:</strong>
+  <strong>Nazwa:</strong>
   <%= @user.name %>
 </p>
 
 <p>
-  <strong>Role:</strong>
+  <strong>Rola:</strong>
   <%= @user.role.name %>
 </p>
 
-<p>
-  <strong>Area:</strong>
-  <%= @user.area_id %>
-</p>
 
 <p>
-  <strong>Email:</strong>
+  <strong>E-mail:</strong>
   <%= @user.email %>
 </p>
 
-  <% if @user.area_id.present? == true
-   %> <p>
-  <strong>Area:</strong> <%= @user_area.name %></p>
+<% if @user.area_id.present? == true %> <p>
+  <strong>Okręg wyborczy:</strong> <%= @user_area.name %></p>
 <p>
-  <strong>Voivodeship:</strong> 
+  <strong>Województwo:</strong> 
    <%= @user_voivodeship.name %> </p>
   <% end %>
 
+<p>
+  <strong>Zarejestrowany: </strong>
+  <%= @joined_on %>
+</p>
+<p>
+  <strong>Ostatnie logowanie:</strong>
+  <%= @last_login %>
+</p>
+<p>
+  <strong>Ilość logowań:</strong>
+  <%= @user.sign_in_count %>
+</p>
+<br><br>
 
-<%= link_to 'Edit', edit_user_path(@user), class: "button"  %> 
-<%= link_to 'Delete', @user, method: :delete, data: { confirm: 'Are you sure?' }, class: "button" %></td>
-<%= link_to 'Back', users_path, class: "button" %>
+<%= link_to 'Edytuj', edit_user_path(@user), class: "button"  %> 
+<%= link_to 'Usuń', @user, method: :delete, data: { confirm: 'Na pewno usunąć?' }, class: "button" %></td>
+<%= link_to 'Wróć', users_path, class: "button" %>
 </div>

@@ -3,24 +3,24 @@
 <h1 class="voivodeship_name">
 	<%= @commitee.name %>
 </h1>
+<strong> Województwa, w których startuje komitet: </strong>
+ <%= @assosciated_voivodeships %></br></br>	</br></br>	
+
 
 	 	<% unless  @commitee.image.blank? %>
 			    <%= image_tag @commitee.image.url(:medium) %> 
 	    <% end %>
 </br></br>	
 
-<strong> Voivodeships: </strong>
- <%= @assosciated_voivodeships %>
 
 </br></br>
 
-
 </br>
 </br>
 
 
-	<%= link_to 'Edit', edit_commitee_path(@commitee), class: "button" %>
-	<%= link_to 'Delete', commitee_path(@commitee), method: :delete, data: { confirm: 'Are you sure?' } ,class: "button" %>
+	<%= link_to 'Edytuj', edit_commitee_path(@commitee), class: "button" %>
+	<%= link_to 'Usuń', commitee_path(@commitee), method: :delete, data: { confirm: 'Na pewno usunąć?' } ,class: "button" %>
 
 
 

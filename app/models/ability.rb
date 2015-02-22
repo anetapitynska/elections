@@ -6,11 +6,10 @@ class Ability
  
     if user.role.name == "admin"
       can :manage, [Area, Voivodeship, Commitee, User, Role]
-      can [:read, :destroy , :sum], Vote
+      can [:read, :destroy , :sum, :sum_voivodeships], Vote
       cannot [:create, :update], Vote
     end
     if user.role.name == "area_member"
-      can :read, Voivodeship
       can [:read, :update], Area do |a|
         a.id.to_s == user.area_id.to_s
       end

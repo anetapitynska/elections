@@ -18,14 +18,22 @@
 		</div> 
 
 		<ul>
-			<li class="category">Elections App</li>
-			<li><%= link_to "Voivodeships", root_path %></li>
-			<li><%= link_to "Commitees", commitees_path %></li>
-			<li><%= link_to "Users", users_path %></li>
-			<li><%= link_to "Roles", roles_path %></li>
-			<li><%= link_to "Votes", votes_path %></li>
-			<li><%= link_to "Sum", sum_path %></li>
-		</ul>
+			<li class="category">Państwowa Komisja Wyborcza</li>			
+
+		<% if current_user.role.name == "central_member" or current_user.role.name == "admin"  %>
+				<li><%= link_to "Województwa", voivodeships_path %></li>
+				<li><%= link_to "Komitety wyborcze", commitees_path %></li>
+				<li><%= link_to "Głosy", votes_path %></li>
+				<li><%= link_to "Wyniki zbiorcze", sum_path %></li>
+				<li><%= link_to "Wyniki w województwach", sum_voivodeships_path %></li>
+
+		<% end %>
+
+		<% if current_user.role.name == "admin" %>
+			<li><%= link_to "Użytkownicy", users_path %></li>
+			<li><%= link_to "Role", roles_path %></li>
+		<% end %>
+					</ul>
 
 
 	</div>
@@ -34,11 +42,27 @@
 		<div id="header">
 
 			<% if user_signed_in? %>	
-				<p> Welcome <%= current_user.name %>! Rola: <%= current_user.role.name %> Area: <%= current_user.area_id %> </p>
+			<strong> 	<p> Witaj <%= current_user.name %>! </strong>
+
+				 <strong> Rola: </strong> <%= current_user.role.name %>
+
+
+			<% unless current_user.area_id.nil? %>	
+
+				<strong> Okręg: </strong> <%= 
+				 			@a = Area.find(current_user.area_id) 
+				 			@a.name 
+				 		%> 
+
+			<% end %>
+
+
+				</p>
+
 			
 			<% else %>
 
-			<p>Elections Application </p> 
+			<p>Aplikacja wyborcza</p> 
 
 <% end %>
 
@@ -48,10 +72,10 @@
 
 
 			<% if user_signed_in? %>
-			<button class="button">	<%= link_to "Edit your profile", edit_user_registration_path %></button>
-			<button class="button">	<%= link_to "Log out", destroy_user_session_path, :method => :delete %></button>
-			<% else %><button class="button">	<%= link_to "Sign up", new_user_registration_path %></button>
-			<button class="button">	<%= link_to "Sign in", new_user_session_path %></button><% end %>
+			<button class="button">	<%= link_to "Edytuj twój profil", edit_user_registration_path %></button>
+			<button class="button">	<%= link_to "Wyloguj", destroy_user_session_path, :method => :delete %></button>
+			<% else %><button class="button">	<%= link_to "Zarejestruj się", new_user_registration_path %></button>
+			<button class="button">	<%= link_to "Zaloguj się", new_user_session_path %></button><% end %>
 
 			</div>
 

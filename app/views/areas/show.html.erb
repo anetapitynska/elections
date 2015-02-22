@@ -2,43 +2,43 @@
 
 <% if current_user.role.name == "admin" or current_user.area_id.to_i == @area.id %>
 
-<%= link_to 'Edit', edit_voivodeship_area_path(@voivodeship, @area), class: "button" %> <% end %>
+<%= link_to 'Edytuj', edit_voivodeship_area_path(@voivodeship, @area), class: "button" %> <% end %>
 
 <% if current_user.role.name == "admin" %>
 
-<%= link_to 'Delete', voivodeship_area_path(@voivodeship, @area), method: :delete, data: { confirm: 'Are you sure?' } ,class: "button" %>
+<%= link_to 'Usuń', voivodeship_area_path(@voivodeship, @area), method: :delete, data: { confirm: 'Na pewno usunąć?' } ,class: "button" %>
 
 <% end %>
 <% if current_user.area_id.to_i == @area.id %>
-<%= link_to 'New Vote', new_vote_path, class: "button" %>
+<%= link_to 'Dodaj głosy', new_vote_path, class: "button" %>
 <% end %>
 <h1 class="voivodeship_name">
 	<%= @area.name %> 
 </h1>
 
-<p><strong> Electorial area No. </strong> <%= @area.number %> </p>
+<p><strong> Okręg wyborczy nr </strong> <%= @area.number %> </p>
 
-<p ><strong>  Number of people allowed to vote:  </strong>  <%= @area.people %></p>
+<p ><strong>  Ilość osób uprawnionych do głosowania:  </strong>  <%= @area.people %></p>
 
+<p><strong>   Komitety biorące udział w wyborach: </strong> <%= @assosciated_commitees %> </p>
 
-<p><strong>   Committees:  </strong> <%= @assosciated_commitees %> </p>
+<p><strong> Wydane karty do głosowania: </strong> <%= @area.ballots %> </p>
 
-<p><strong> Ballots: </strong> <%= @area.ballots %> </p>
+<p><strong> Suma wszystkich oddanych głosów (ważne, puste, błędne): </strong> <%= @suma%> </p>
 
-<p><strong> Sum of votes: </strong> <%= @suma%> </p>
+<p><strong>Ilość pustych głosów: </strong><%= @area.empty_votes %> </p>
 
-<p><strong>Empty votes: </strong><%= @area.empty_votes %> </p>
+<p><strong>Ilość niepoprawnych głosów:</strong>  <%= @area.incorrect_votes %> </p>
 
-<p><strong>Incorrect votes:</strong>  <%= @area.incorrect_votes %> </p>
+<% if current_user.role.name == 'admin' or  current_user.role.name == 'central_member' %>
 
 <table class="table table-striped">
 	  <thead>
 	    <tr>
-	      <th>Number of votes</th>
-	      <th>Area</th>
-	      <th>Committee</th>
+	      <th>Ilość głosów</th>
+	      <th>Komitet wyborczy</th>
 	 
-	      <th colspan="3"></th>
+	      <th colspan="2"></th>
 	    </tr>
 	  </thead>
 
@@ -49,7 +49,6 @@
 	        <% if vote.area.voivodeship_id == @voivodeship.id %>
 	      <tr>
 	        <td><%= vote.sum %></td>
-	        <td><%= vote.area.name %></td>
 	        <td><%= vote.commitee.name %></td>	        
 	      </tr>
 	         <% end %>
@@ -57,16 +56,17 @@
 	  </tbody>
 	</table>
 
+<% end %>
 
 <% if current_user.area_id.to_i == @area.id %>
 
   <table class="table table-striped">
   <thead>
     <tr>
-      <th>Number</th>
-          <th>Area</th>
-              <th>Commitee</th>
-      <th colspan="3"></th>
+      <th>Ilość głosów</th>
+       
+      <th>Komitet wyborczy</th>
+      <th colspan="2"></th>
     </tr>
   </thead>
 
@@ -75,11 +75,11 @@
       <% if vote.area.voivodeship_id == @voivodeship.id %>
       <tr>
         <td><%= vote.number %></td>
-        <td><%= vote.area.name%></td>
+    
         <td><%= vote.commitee.name %></td>    
-        <td><%= link_to 'Show', vote %></td>
-        <td><%= link_to 'Edit', edit_vote_path(vote) %></td>
-        <td><%= link_to 'Destroy', vote, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Pokaż', vote %></td>
+        <td><%= link_to 'Edytuj', edit_vote_path(vote) %></td>
+        <td><%= link_to 'Usuń', vote, method: :delete, data: { confirm: 'Na pewno usunąć?' } %></td>
    
         <% end %>
     <% end %>

@@ -1,5 +1,5 @@
 <div class="voivodeship_wrapper">
-<h1> All Votes </h1>
+<h1> Wszystkie głosy </h1>
 
 </div>
 
@@ -10,9 +10,9 @@
   <table class="table table-striped">
   <thead>
     <tr>
-      <th>Number</th>
-          <th>Area</th>
-              <th>Commitee</th>
+      <th>Ilość głosów</th>
+          <th>Okręg wyborczy</th>
+              <th>Komitet wyborczy</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -23,9 +23,9 @@
         <td><%= vote.number %></td>
         <td><%= vote.area.name%></td>
         <td><%= vote.commitee.name %></td>
-        <td><%= link_to 'Show', vote %></td>
-        <td><%= link_to 'Edit', edit_vote_path(vote) %></td>
-        <td><%= link_to 'Destroy', vote, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Pokaż', vote %></td>
+        <td><%= link_to 'Edytuj', edit_vote_path(vote) %></td>
+        <td><%= link_to 'Usuń', vote, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -38,5 +38,5 @@
 <br>
 
 
-<%= link_to 'New Vote', new_vote_path, class: "button" %>
+<%= link_to 'Dodaj głos', new_vote_path, class: "button" %>
 </div>

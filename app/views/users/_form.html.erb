@@ -1,7 +1,7 @@
 <%= form_for(@user) do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+      <h2>Użytkownik nie został zapisany. <br> Błędy: <%= @voivodeship.errors.count %> </h2>
 
       <ul>
       <% @user.errors.full_messages.each do |message| %>
@@ -12,26 +12,26 @@
   <% end %>
 
 <div class: "form-group">
-    <%= f.label :name %><br>
+    <%= f.label 'Nazwa' %><br>
     <%= f.text_field :name ,  class: "form-control" %>
-  </div>
+</div><br>
  <div class: "form-group">
-    <%= f.label :role_id %><br>
-    <%= collection_select(:user, :role_id, Role.all, :id, :name, {prompt: true},  class: "form-control" )%>
-  </div>
+    <%= f.label 'Rola' %><br>
+    <%= collection_select(:user, :role_id, Role.all, :id, :name, {prompt: "Wybierz z listy"},  class: "form-control" )%>
+  </div><br>
 <div class: "form-group">
-    <%= f.label :area_id %><br>
-    <%= collection_select(:user, :area_id, Area.all, :id, :name, {prompt: true} ,  class: "form-control") %>
-  </div>
+    <%= f.label 'Okręg wyborczy' %><br>
+    <%= collection_select(:user, :area_id, Area.all, :id, :name, {prompt: "Wybierz z listy"} ,  class: "form-control") %>
+</div><br>
 
 <div class: "form-group">
-  <%= f.label :email %><br>
-  <%= f.text_field :email ,  class: "form-control" %>
+  <%= f.label 'E-mail' %><br>
+  <%= f.text_field :email ,  class: "form-control" %><br>
 <div class: "form-group">
-  <%= f.label :password %><br>
-  <%= f.password_field :password, placeholder: "Leave blank if unchanged" ,  class: "form-control" %>
-</div>
+  <%= f.label 'Hasło' %><br>
+  <%= f.password_field :password, placeholder: "Pozostaw puste jeśli niezmienione" ,  class: "form-control" %>
+</div><br>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Zapisz' %>
   </div>
 <% end %>

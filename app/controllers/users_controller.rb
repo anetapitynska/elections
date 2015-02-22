@@ -42,7 +42,7 @@ class UsersController < InheritedResources::Base
    
      respond_to do |format|
       if successfully_updated
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        format.html { redirect_to @user, notice: 'Użytkownik został zaktualizowany.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

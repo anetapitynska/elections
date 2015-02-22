@@ -1,17 +1,21 @@
+<div id="page_wrapper">
+
 
 <p>
-  <strong>Name:</strong>
+  <strong>Nazwa:</strong>
   <%= @role.name %>
 </p>
 
 <p>
-  <strong>Description:</strong>
+  <strong>Opis:</strong>
   <%= @role.description %>
 </p>
 <p>
-  <strong>Assosciated users:</strong>
+  <strong>Powiązani użytkownicy:</strong>
   <%= @assosciated_users %>
 </p>
+<br>
+<%= link_to 'Edytuj', edit_role_path(@role), class: "button" %> 
+<%= link_to 'Wróć', roles_path,  class: "button" %> 
 
-<%= link_to 'Edit', edit_role_path(@role) %> |
-<%= link_to 'Back', roles_path %>
+</div>

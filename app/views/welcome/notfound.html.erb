@@ -1,15 +1,21 @@
 <div id="page_wrapper">
 
-<h1>NOT FOUND </h1>
+<h1>Nie znaleziono strony.</h1>
 
 
 	<div class="buttons">
 			<% if user_signed_in? %>
-			Welcome <%= current_user.name %>!<button class="button">	<%= link_to "Edit your profile", edit_user_registration_path %></button>
-			<button class="button">	<%= link_to "Log out", destroy_user_session_path, :method => :delete %></button>
-			<% else %><button class="button">	<%= link_to "Sign up", new_user_registration_path %></button>
-			<button class="button">	<%= link_to "Sign in", new_user_session_path %></button><% end %>
+				Witaj <%= current_user.name %>!<br>
+				<br>
 
-			</div>
+				<button class="button">	<%= link_to "Edytuj twój profil", edit_user_registration_path %></button>
+
+				<button class="button">	<%= link_to "Wyloguj się", destroy_user_session_path, :method => :delete %></button>
+			<% else %>
+				<button class="button">	<%= link_to "Zarejestruj się", new_user_registration_path %></button>
+				<button class="button">	<%= link_to "Zaloguj się", new_user_session_path %></button>
+			<% end %>
+
+	</div>
 
 </div>

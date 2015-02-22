@@ -1,14 +1,10 @@
 <div class="voivodeship_wrapper">
-
-
 	<h1 class="voivodeship_name">
 		<% unless  @voivodeship.image.blank? %>
 			    <%= image_tag @voivodeship.image.url(:thumb) %> 
 			  <% end %>
 			 Województwo <%= @voivodeship.name %>
 	</h1>
-
-
 </div>
 
 
@@ -17,27 +13,25 @@
 
 <% if current_user.role.name == "admin" %>
 
-	<%= link_to 'Edit', edit_voivodeship_path(@voivodeship), class: "button" %>
-	<%= link_to 'Delete', voivodeship_path(@voivodeship), method: :delete, data: { confirm: 'Are you sure?' } ,class: "button" %>
+	<%= link_to 'Edytuj', edit_voivodeship_path(@voivodeship), class: "button" %>
+	<%= link_to 'Usuń', voivodeship_path(@voivodeship), method: :delete, data: { confirm: 'Na pewno usunąć?' } ,class: "button" %>
 	<br>
 	<br>
 
 
 <% end %>
 
-<p><strong>Seats in the Regional Assembly: </strong> <%= @voivodeship.seats %> </p>
-<p><strong> Committees: </strong>  <%= @assosciated_commitees %> </p>
+<p><strong>Ilość miejsc w sejmiku wojewódzkim: </strong> <%= @voivodeship.seats %> </p>
+<p><strong>Komitety biorące udział w wyborach: </strong>  <%= @assosciated_commitees %> </p>
 
 
-
-
-	<h2>Results </h2>
+	<h2>Wyniki głosowania </h2>
 	<table class="table table-striped">
 	  <thead>
 	    <tr>
-	      <th>Number of votes</th>
-	      <th>Area</th>
-	      <th>Committee</th>
+	      <th>Ilość głosów</th>
+	      <th>Okręg</th>
+	      <th>Komitet</th>
 	 
 	      <th colspan="3"></th>
 	    </tr>
@@ -61,8 +55,9 @@
 
 	<!-- 	(Submitted <%= time_ago_in_words(@voivodeship.created_at) %> Ago) -->
 
-	<h2>Voter turnout</h2>
-<%= pie_chart @voivodeship.areas.group(:name).sum(:ballots) %>
+	<h2>Frekwencja w poszczególnych okręgach</h2>
+    
+    <%= pie_chart @voivodeship.areas.group(:name).sum(:ballots) %>
 
 
 
@@ -71,12 +66,12 @@
 	<div id="voivodship_wrapper">
 
 		<% if @voivodeship.areas.count == 1 %>
-			<h2>There is <%= @voivodeship.areas.count %> electorial area: </h2>
+			<h2> <%= @voivodeship.areas.count %> okręg wyborczy: </h2>
 		   <% else %>
 			   <% if @voivodeship.areas.count == 0 %>
-				<h2>There are no electorial areas. </h2>
+				<h2>Brak okręgów wyborczych. </h2>
 		 	   <% else %>
-		      <h2>There are <%= @voivodeship.areas.count %> electorial areas: </h2>
+		      <h2> <%= @voivodeship.areas.count %> okręgi wyborcze: </h2>
 			<% end %>
 
 		<% end %>
@@ -93,7 +88,7 @@
 
 <% if current_user.role.name == "admin" %>
 
-		<h3>Add an electorial area</h3>
+		<h3>Dodaj okręg wyborczy </h3>
 		<%= render "areas/form" %>
 
 		<% end %>

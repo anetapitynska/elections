@@ -2,35 +2,35 @@
 
 <%= form_for([@voivodeship, @area]) do |f| %>
 <div class="form-group">
-	<%= f.label :name %> <br>
+	<%= f.label 'Nazwa' %> <br>
 	<%= f.text_field :name, class: "form-control"%>
 </div>
 
 <div class="form-group">
-	<%= f.label :number %> <br>
+	<%= f.label "Numer" %> <br>
 	<%= f.text_field :number, class: "form-control"%>
 </div>
 
 <div class="form-group">
-	<%= f.label :people %> <br>
+	<%= f.label "Ilość osób uprawnionych do głosowania" %><br>
 	<%= f.text_field :people, class: "form-control"%>
 </div>
 
 <div class="form-group">
-	<%= f.label :ballots %> <br>
+	<%= f.label "Ilość wydanych kart wyborczych"  %> <br>
 	<%= f.text_field :ballots, class: "form-control"%>
 </div>
 
 <div class="form-group">
-	<%= f.label :empty_votes %> <br>
+	<%= f.label "Ilość pustych głosów" %> <br>
 	<%= f.text_field :empty_votes, class: "form-control"%>
 </div>
 <div class="form-group">
-	<%= f.label :incorrect_votes %> <br>
+	<%= f.label "Ilość niepoprawnych głosów" %> <br>
 	<%= f.text_field :incorrect_votes, class: "form-control"%>
 </div>
 <p>
-	<%= f.submit %>
+	<br><%= f.submit "Wyślij" %>
 </p>
 
 <% end %>

@@ -1,21 +1,21 @@
-<p id="notice"><%= notice %></p>
+<div id="page_wrapper">
 
 <p>
-  <strong>Number:</strong>
+  <strong>Ilość głosów:</strong>
  
    <%= @vote.number %>
  <br> <br>
- <strong>Area:</strong>
+ <strong>Okręg wyborczy:</strong>
 
  <%= @vote.area.name %>
 
  <br> <br>
- <strong>Commitee:</strong>
+ <strong>Komitet wyborczy:</strong>
 
   <%= @vote.commitee.name %>
 
 </p>
+<br>
+<%= link_to 'Edytuj', edit_vote_path(@vote), class: "button" %> 
 
-<%= link_to 'Edit', edit_vote_path(@vote) %> |
-
-<%= link_to 'Back', votes_path %>
+</div>

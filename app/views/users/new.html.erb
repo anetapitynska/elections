@@ -1,10 +1,10 @@
 <div id="page_wrapper">
-<h1>New User</h1>
+<h1>Dodaj użytkownika</h1>
 
 <%= form_for(@user) do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+      <h2>Użytkownik nie został zapisany. <br> Błędy: <%= @voivodeship.errors.count %> </h2>
 
       <ul>
       <% @user.errors.full_messages.each do |message| %>
@@ -15,39 +15,39 @@
   <% end %>
 
 <div class="form-group">
-  <%= f.label :name %><br />
+  <%= f.label 'Nazwa' %><br />
   <%= f.text_field :name, class: "form-control" %>
 </div>
 
   <div class="form-group">
-    <%= f.label :email %><br />
+    <%= f.label 'E-mail' %><br />
     <%= f.email_field :email, autofocus: true, class: "form-control" %>
   </div>
 
    <div class="form-group">
-    <%= f.label :role_id, "Rola" %><br>
-    <%= collection_select(:user, :role_id, Role.all, :id, :name, {prompt: true}, class: "form-control") %>
+    <%= f.label "Rola" %><br>
+    <%= collection_select(:user, :role_id, Role.all, :id, :name, {prompt: "Wybierz z listy"}, class: "form-control")  %>
   </div>
 
 
   <div class="form-group">
-    <%= f.label :password %>
+    <%= f.label "Hasło" %>
     <% if @validatable %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <em>(Minimum <%= @minimum_password_length %> znaków)</em>
     <% end %><br />
     <%= f.password_field :password, autocomplete: "off" , class: "form-control" %>
   </div>
 
   <div class="form-group">
-    <%= f.label :password_confirmation %><br />
+    <%= f.label 'Potwierdzenie hasła'%><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" , class: "form-control"%>
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Zapisz" %>
   </div>
 <% end %>
 
-
-<%= link_to 'Back', users_path %>
+<br><br>
+<%= link_to 'Wróć', users_path, class:"Button" %>
 </div>
