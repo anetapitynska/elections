@@ -24,10 +24,7 @@
     <%= f.email_field :email, autofocus: true, class: "form-control" %>
   </div>
 
-   <div class="form-group">
-    <%= f.label "Rola" %><br>
-    <%= collection_select(:user, :role_id, Role.all, :id, :name, {prompt: "Wybierz z listy"}, class: "form-control")  %>
-  </div>
+
 
 
   <div class="form-group">

@@ -24,9 +24,9 @@
 
 <p><strong> Wydane karty do głosowania: </strong> <%= @area.ballots %> </p>
 
-<p><strong> Suma wszystkich oddanych głosów (ważne, puste, błędne): </strong> <%= @suma%> </p>
+<p><strong> Suma wszystkich oddanych głosów (ważne, puste, błędne): </strong> <%= @suma%><% unless @suma == @area.ballots %> <span class="alert"> UWAGA! Liczba wydanych kart i oddanych głosów nie zgadza się! <span> <% end %> </p> 
 
-<p><strong>Ilość pustych głosów: </strong><%= @area.empty_votes %> </p>
+<p><strong>Ilość pustych głosów: </strong><%= @area.empty_votes %> </p>  
 
 <p><strong>Ilość niepoprawnych głosów:</strong>  <%= @area.incorrect_votes %> </p>
 
@@ -77,7 +77,7 @@
         <td><%= vote.number %></td>
     
         <td><%= vote.commitee.name %></td>    
-        <td><%= link_to 'Pokaż', vote %></td>
+  
         <td><%= link_to 'Edytuj', edit_vote_path(vote) %></td>
         <td><%= link_to 'Usuń', vote, method: :delete, data: { confirm: 'Na pewno usunąć?' } %></td>
    
@@ -91,5 +91,9 @@
 
 <%= pie_chart Vote.joins(:commitee).where(area_id: @area.id).group(:name).sum(:number) %>
 	
+
+
+
+
 
 </div>

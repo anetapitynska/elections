@@ -81,7 +81,7 @@ class VotesController < InheritedResources::Base
         @area_id = current_user.area_id
         @area = Area.find(@area_id)
         @voivodeship_id = @area.voivodeship_id
-        format.html { redirect_to voivodeship_area_url(@voivodeship_id, @area_id) , notice: 'Edytuj już istniejące głosy dla tego komitetu w danym okręgu.'}
+        format.html { redirect_to voivodeship_area_url(@voivodeship_id, @area_id) , notice: 'Dodaj poprawny głos lub edytuj już istniejące głosy dla tego komitetu w danym okręgu.'}
        # format.json { render json: @vote.errors, status: :unprocessable_entity }
       end
     end
@@ -106,7 +106,7 @@ class VotesController < InheritedResources::Base
     @vote = Vote.find(params[:id])
     respond_to do |format|
       if @vote.update(vote_params)
-        format.html { redirect_to @vote, notice: 'Głosy zostały zaktualizowane.' }
+        format.html { redirect_to voivodeship_area_url(@voivodeship_id, @area_id), notice: 'Głosy zostały zaktualizowne.' }
         format.json { render :show, status: :ok, location: @vote }
       else
         format.html { render :edit }

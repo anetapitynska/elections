@@ -11,7 +11,7 @@ class Ability
     end
     if user.role.name == "area_member"
      
-      can [:read, :create], Vote
+      can [:create], Vote
       can [:update, :destroy], Vote do |v|
         v.area_id.to_s == user.area_id.to_s
       end

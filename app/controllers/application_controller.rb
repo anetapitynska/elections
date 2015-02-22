@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   #check_authorization :unless => :devise_controller?
 
 	protect_from_forgery with: :exception
-	#rescue_from ActiveRecord::RecordNotFound, :with => :record_not_found
+	rescue_from ActiveRecord::RecordNotFound, :with => :record_not_found
      rescue_from CanCan::AccessDenied do |exception|
 	 flash[:error] = "Brak uprawnień!"
 	 redirect_to root_url
@@ -13,13 +13,13 @@ class ApplicationController < ActionController::Base
 	before_filter :configure_permitted_parameters, if: :devise_controller?
 	
 	def not_found
-	  flash[:error] = "The page you were looking for doesn't exist"
+	  flash[:error] = "Strona, której szukasz nie istnieje."
 	    redirect_to root_url
 	end
 
   private
 	  def record_not_found
-	  	flash[:error] = "The page you were looking for doesn't exist RecordNotFound"
+	  	flash[:error] = "Strona, której szukasz nie istnieje."
 	    redirect_to root_url
 	  end
 

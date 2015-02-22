@@ -24,7 +24,7 @@
 <p><strong>Ilość miejsc w sejmiku wojewódzkim: </strong> <%= @voivodeship.seats %> </p>
 <p><strong> Ilość osób uprawnionych do głosowania: </strong>  <%= @sum_people %> </p>
 <p><strong> Wydane karty do głosowania: </strong>  <%= @sum_ballots %> </p>
-<p><strong> Oddane głosy:   </strong><%= @sum_all %> </p>
+<p><strong> Oddane głosy:   </strong><%= @sum_all %>  <% unless @sum_all == @sum_ballots %> <span class="alert"> UWAGA! Liczba wydanych kart i oddanych głosów nie zgadza się! <span> <% end %> </p>
 <p><strong> Poprawne głosy:  </strong> <%= @sum_correct %> </p>
 <p><strong> Niepoprawne głosy: </strong>  <%= @sum_incorrect %> </p>
 <p><strong> Puste głosy: </strong>  <%= @sum_empty %> </p>
