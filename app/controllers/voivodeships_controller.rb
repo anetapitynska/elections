@@ -11,6 +11,12 @@ class VoivodeshipsController < ApplicationController
 		@voivodeship = Voivodeship.new
 	end
 
+	def sum
+		@voivodeship = Voivodeship.find(params[:id]) 
+  		@areas = Area.where(id_voivodeship == @voivodeship.id)
+  		@suma = Vote.where(area_id == @areas).sum(:number)
+	end
+
 	def create
 		@voivodeship = Voivodeship.new(voivodeship_params)
 		@voivodeship.save
@@ -25,9 +31,15 @@ class VoivodeshipsController < ApplicationController
 	def show
 
 		@voivodeship = Voivodeship.find(params[:id]) 
-		@vote = Vote.select('area_id, commitee_id, sum(number) as sum').group('area_id, commitee_id').order('sum DESC')
-		@votea = Vote.select('area_id, commitee_id, number').order('number DESC')
-
+		
+  		@sum_correct = Vote.select('area_id, commitee_id, number').where(area_id: @voivodeship.areas).sum(:number)
+  		@sum_incorrect = Area.select('id, incorrect_votes').where(id: @voivodeship.areas).sum(:incorrect_votes)
+  		@sum_empty = Area.select('id, empty_votes').where(id: @voivodeship.areas).sum(:empty_votes)
+  		@sum_all = @sum_correct.to_i + @sum_incorrect.to_i + @sum_empty.to_i
+  		@sum_ballots = Area.select('id, ballots').where(id: @voivodeship.areas).sum(:ballots)
+		@sum_people = Area.select('id, people').where(id: @voivodeship.areas).sum(:people)
+		@vote = Vote.select('area_id, commitee_id, sum(number) as sum').group('commitee_id').order('sum DESC')
+		
   	if @voivodeship.commitees.length == 0
   		@assosciated_commitees = "None"
  	  else

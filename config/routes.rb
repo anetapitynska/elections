@@ -20,6 +20,7 @@ devise_for :users
   ActiveAdmin.routes(self)
   resources :voivodeships do
     resources :areas
+    
   end
 
   resources :commitees
@@ -32,6 +33,7 @@ devise_for :users
   
 get 'sum_voivodeships' => 'votes#sum_voivodeships', :name=> 'sumav'
 get 'sum' => 'votes#sum', :name=> 'suma'
+
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

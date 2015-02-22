@@ -12,8 +12,10 @@ class VotesController < InheritedResources::Base
   end
 
   def sum_voivodeships
-   @vote = Vote.select('area_id, commitee_id, sum(number) as sum').group('commitee_id').order('sum DESC')
+    @vote = Vote.select('area_id, commitee_id, sum(number) as sum').group('commitee_id').order('sum DESC')
     @voivodeships = Voivodeship.all.order('name ASC')
+
+
   end
 
   def sum

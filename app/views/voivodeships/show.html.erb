@@ -22,7 +22,12 @@
 <% end %>
 
 <p><strong>Ilość miejsc w sejmiku wojewódzkim: </strong> <%= @voivodeship.seats %> </p>
-<p><strong>Komitety biorące udział w wyborach: </strong>  <%= @assosciated_commitees %> </p>
+<p><strong> Ilość osób uprawnionych do głosowania: </strong>  <%= @sum_people %> </p>
+<p><strong> Wydane karty do głosowania: </strong>  <%= @sum_ballots %> </p>
+<p><strong> Oddane głosy:   </strong><%= @sum_all %> </p>
+<p><strong> Poprawne głosy:  </strong> <%= @sum_correct %> </p>
+<p><strong> Niepoprawne głosy: </strong>  <%= @sum_incorrect %> </p>
+<p><strong> Puste głosy: </strong>  <%= @sum_empty %> </p>
 
 
 	<h2>Wyniki głosowania </h2>
@@ -30,6 +35,7 @@
 	  <thead>
 	    <tr>
 	      <th>Ilość głosów</th>
+	        <th>Procent</th>
 	      <th>Okręg</th>
 	      <th>Komitet</th>
 	 
@@ -44,6 +50,8 @@
 	        <% if vote.area.voivodeship_id == @voivodeship.id %>
 	      <tr>
 	        <td><%= vote.sum %></td>
+	        <td><%= @percent = (vote.sum.to_f / @sum_all.to_f) * 100
+	        		@percent.round %> %</td>
 	        <td><%= vote.area.name %></td>
 	        <td><%= vote.commitee.name %></td>	        
 	      </tr>
