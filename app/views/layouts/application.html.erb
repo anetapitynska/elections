@@ -23,9 +23,9 @@
 		<% if current_user.role.name == "central_member" or current_user.role.name == "admin"  %>
 				<li><%= link_to "Województwa", voivodeships_path %></li>
 				<li><%= link_to "Komitety wyborcze", commitees_path %></li>
-				<li><%= link_to "Głosy", votes_path %></li>
 				<li><%= link_to "Wyniki zbiorcze", sum_path %></li>
 				<li><%= link_to "Wyniki w województwach", sum_voivodeships_path %></li>
+				<li><%= link_to "Głosy", votes_path %></li>
 
 		<% end %>
 

@@ -1,6 +1,9 @@
 <div class="voivodeship_wrapper">
 <h1> Komitety wyborcze: </h1>
+<% if current_user.role.name == "admin" %>
+
 <button class="button"><%= link_to 'Dodaj komitet', new_commitee_path %> </button><br><br>
+<% end %>
 </div>
 <% @commitees.each do |commitee| %>
 		<div class="voivodeship_wrapper">

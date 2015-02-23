@@ -6,12 +6,11 @@
 			    <%= image_tag @commitee.image.url(:thumb) %> 
 	    <% end %><%= @commitee.name %>
 </h1>
-
+<% if current_user.role.name == "admin" %>
 	<%= link_to 'Edytuj', edit_commitee_path(@commitee), class: "button" %>
 	<%= link_to 'Usuń', commitee_path(@commitee), method: :delete, data: { confirm: 'Na pewno usunąć?' } ,class: "button" %>
+	<br><br>   <% end %>
 
-<br>
-<br>
 </div>
 <div id="page_wrapper">
 <strong> Województwa, w których startuje komitet: </strong>
